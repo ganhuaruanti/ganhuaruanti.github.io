@@ -1,3 +1,9 @@
+---
+layout: post
+title: Laravel TDD 教材
+author: ReccaChao
+tags: [blog]
+---
 # Laravel TDD 教材
 
 有蠻多工程師不在自己使用的專案內加入自動測試，純粹只是因為對自動測試並不熟悉
