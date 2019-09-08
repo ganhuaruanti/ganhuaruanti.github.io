@@ -4,13 +4,22 @@ layout: default
 
 <section class="posts">
     {% for post in site.posts %}
-    <article class="post">
+    {% assign author = site.authors[post.author] %}
 
+    <article class="post">
         <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
 
         {{ post.excerpt }}
 
-        <a href="{{ post.url }}" class="read-more">繼續閱讀</a>
+        <p>... <a href="{{ post.url }}" class="read-more">繼續閱讀</a></p>
+
+        <small class="post-metadata">
+            <span>{{ post.date | date: "%Y-%m-%d" }} by</span>
+            <img class="post-author-avatar avatar"
+                 src="{{ author.avatar | default: 'https://avatars1.githubusercontent.com/u/55027266' }}"/>
+            <a href="https://github.com/{{ author.github | default: 'ganhuaruanti' }}">{{ author.name | default:
+                '某個幹話王' }}</a>
+        </small>
     </article>
     {% endfor %}
 </section>

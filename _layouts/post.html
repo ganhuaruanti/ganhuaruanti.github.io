@@ -6,11 +6,11 @@ layout: default
 
 {% assign author = site.authors[page.author] %}
 
-<div class="post-metadata">
-    <span>{{ page.date | date: "%-d %B %Y" }} by</span>
+<small class="post-metadata">
+    <span>{{ page.date | date: "%Y-%m-%d" }} by</span>
     <img class="post-author-avatar avatar" src="{{ author.avatar | default: 'https://avatars1.githubusercontent.com/u/55027266' }}"/>
     <a href="https://github.com/{{ author.github | default: 'ganhuaruanti' }}">{{ author.name | default: '某個幹話王' }}</a>
-</div>
+</small>
 
 <div class="post-content">
     {{ content }}
