@@ -4,4 +4,4 @@
 
 這邊提供一個小專案，希望可以讓更多人熟悉自動測試，體會怎麼在專案中使用自動測試
 
-[https://github.com/ganhuaruanti/LaravelTDDTraining](https://github.com/ganhuaruanti/LaravelTDDTraining)
+[GitHub 連接](https://github.com/ganhuaruanti/LaravelTDDTraining)
