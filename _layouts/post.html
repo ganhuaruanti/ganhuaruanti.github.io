@@ -6,14 +6,18 @@ layout: default
 
 {% assign author = site.authors[page.author] %}
 
-<p>
-    {{ page.date | date: "%-d %B %Y" }} by
-    <img width="18" src="{{ author.avatar | default: 'https://avatars1.githubusercontent.com/u/55027266' }}" />
+<div class="post-metadata">
+    <span>{{ page.date | date: "%-d %B %Y" }} by</span>
+    <img class="post-author-avatar avatar" src="{{ author.avatar | default: 'https://avatars1.githubusercontent.com/u/55027266' }}"/>
     <a href="https://github.com/{{ author.github | default: 'ganhuaruanti' }}">{{ author.name | default: '某個幹話王' }}</a>
-</p>
+</div>
 
-{{content}}
+<div class="post-content">
+    {{ content }}
+</div>
 
 {% if page.tags.size > 0 %}
-<small>tags: <em>{{ page.tags | join: "</em> - <em>" }}</em></small>
+<div class="post-tags">
+    <em>#{{ page.tags | join: "</em> - <em>#" }}</em>
+</div>
 {% endif %}
