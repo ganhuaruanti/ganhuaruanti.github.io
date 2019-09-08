@@ -5,12 +5,8 @@ layout: default
 <h1>{{ page.title }}</h1>
 
 {% assign author = site.data.authors[page.author] %}
-
-<small class="post-metadata">
-    <span>{{ page.date | date: "%Y-%m-%d" }} by</span>
-    <img class="post-author-avatar avatar" src="{{ author.avatar | default: 'https://avatars1.githubusercontent.com/u/55027266' }}"/>
-    <a href="https://github.com/{{ author.github | default: 'ganhuaruanti' }}">{{ author.name | default: '某個幹話王' }}</a>
-</small>
+{% assign post = page %}
+{% include post-metadata.html %}
 
 <div class="post-content">
     {{ content }}
