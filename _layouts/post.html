@@ -6,9 +6,9 @@ layout: default
 
 {% assign author = site.authors[page.author] %}
 
-<p class="view">
+<p>
     {{ page.date | date: "%-d %B %Y" }} by
-    <img width="24" src="{{ author.avatar | default: 'https://avatars1.githubusercontent.com/u/55027266' }}" />
+    <img width="18" src="{{ author.avatar | default: 'https://avatars1.githubusercontent.com/u/55027266' }}" />
     <a href="https://github.com/{{ author.github | default: 'ganhuaruanti' }}">{{ author.name | default: '某個幹話王' }}</a>
 </p>
 
