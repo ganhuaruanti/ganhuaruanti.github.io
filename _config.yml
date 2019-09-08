@@ -5,17 +5,6 @@ description: 幹話講軟體
 theme: jekyll-theme-hacker
 avatar: https://avatars2.githubusercontent.com/u/55027266
 
-# Authors
-authors:
-  flamerecca:
-    name: Recca Chao
-    avatar: https://avatars1.githubusercontent.com/u/82021
-    github: flamerecca
-  miles:
-    name: Miles Chou
-    avatar: https://avatars0.githubusercontent.com/u/1258752
-    github: MilesChou
-
 exclude:
   - Gemfile
   - Gemfile.lock
