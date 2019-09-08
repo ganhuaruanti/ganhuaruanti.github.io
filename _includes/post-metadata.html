@@ -1,9 +1,8 @@
 {% assign date = post.date | date: "%Y-%m-%d" %}
 {% assign name = author.name | default: '某個幹話王' %}
 {% assign avatar = author.avatar | default: 'https://avatars1.githubusercontent.com/u/55027266' %}
-{% assign github = author.github | default: 'ganhuaruanti' %}
 <small class="post-metadata">
     <span>{{ date }} by</span>
     <img class="post-author-avatar avatar" src="{{ avatar }}"/>
-    <a href="https://github.com/{{ github }}">{{ name }}</a>
+    <a href="/authors/{{ post.author }}">{{ name }}</a>
 </small>
