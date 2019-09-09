@@ -4,8 +4,14 @@
 @import "{{ site.theme }}";
 
 article.post {
-  padding: 10px 0px 20px 0px;
+  padding: 10px 0 20px 0;
+
+  h2 a {
+    color: #b5e853;
+    text-decoration: none;
+  }
 }
+
 
 footer {
   padding: 10px 0px 20px 0px;
