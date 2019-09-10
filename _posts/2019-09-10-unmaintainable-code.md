@@ -1,6 +1,10 @@
+---
+layout: post
+title: 如何寫出無法維護的程式碼
+author: flamerecca
+tags: [blog]
+---
 來源為[https://github.com/Droogans/unmaintainable-code/](https://github.com/Droogans/unmaintainable-code/)
-
-# 如何寫出無法維護的程式碼
 
 ## 保障終身工作 ;-)
 
