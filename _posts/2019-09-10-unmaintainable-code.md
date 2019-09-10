@@ -391,11 +391,11 @@ Compiler directives were designed with the express purpose of making the same co
 
 ## 文件
 
-> _Any fool can tell the truth, but it requires a man of some sense to know how to lie well._ - Samuel Butler (1835 - 1902)
+> _傻瓜都知道怎麼說實話，但需要一些能力才知道如何更好地說謊。_ - 塞繆爾·巴特勒 (1835 - 1902)
 
-> _Incorrect documentation is often worse than no documentation._ - Bertrand Meyer
+> _不正確的文件通常比沒有文件更糟糕。_ - 伯特蘭·邁耶
 
-Since the computer ignores comments and documentation, you can lie outrageously and do everything in your power to befuddle the poor maintenance programmer.
+既然電腦會忽略註解和文件，你可以在裡面大膽的撒謊，並盡可能的讓之後維護的工程師感到困惑。
 
 #### 在註解裡說謊
 
@@ -413,7 +413,7 @@ Since the computer ignores comments and documentation, you can lie outrageously 
 
 假如你在為一個飛機定位系統撰寫文件。確保假設加入一條新的航線，程式碼至少要改 25 個地方以上。確定沒有文件如果加入航線到底要注意哪些地方。後面的維護者沒有看過你的每一行程式之前，完全沒有辦法更新任何商業流程。
 
-#### On the Proper Use Of Documentation Templates
+#### 文件範本的正確用法
 
 Consider function documentation prototypes used to allow automated documentation of the code. These prototypes should be copied from one function (or method or class) to another, but never fill in the fields. If for some reason you are forced to fill in the fields make sure that all parameters are named the same for all functions, and all cautions are the same but of course not related to the current function at all.
 
@@ -444,13 +444,13 @@ Those who come after you should only be able to find one or two contradictory, e
 
 Never document the units of measure of any variable, input, output or parameter. e.g. feet, metres, cartons. This is not so important in bean counting, but it is very important in engineering work. As a corollary, never document the units of measure of any conversion constants, or how the values were derived. It is mild cheating, but very effective, to salt the code with some incorrect units of measure in the comments. If you are feeling particularly malicious, make up your **own** unit of measure; name it after yourself or some obscure person and never define it. If somebody challenges you, tell them you did so that you could use integer rather than floating point arithmetic.
 
-#### 抓到了
+#### 抓到靈感
 
-Never document gotchas in the code. If you suspect there may be a bug in a class, keep it to yourself. If you have ideas about how the code should be reorganised or rewritten, for heaven's sake, do not write them down. Remember the words of Thumper in the movie Bambi, _"If you can't say anything nice, don't say anything at all"_? What if the programmer who wrote that code saw your comments? What if the owner of the company saw them? What if a customer did? You could get yourself fired. An anonymous comment that says "This needs to be fixed!" can do wonders, especially if it's not clear what the comment refers to. Keep it vague, and nobody will feel personally criticised.
+絕不在程式碼內紀錄閱讀後的感覺。如果你看完程式碼之後，懷疑這裡面可能有錯誤，自己知道就好。如果你有這段程式碼該怎麼重寫，或者重新規劃的點子，千萬千萬不要寫下來。記得小鹿斑比裡面兔子桑普的名言：「 _"如果你說不出好話，那就什麼都別說"_ 」嗎？要是其他寫這段程式碼的工程師看到你的註解怎麼辦？要是公司老闆看到怎麼辦？要是客戶看到呢？你可能會害你自己被解僱！匿名註解說「這裡要改」對混淆工程師有著奇效，特別是註解的位置根本搞不清楚到底在說哪一段時。盡可能含糊其辭，這樣一來就沒有人會覺得他被批評了。
 
 #### 用文件紀錄變數
 
-**Never** put a comment on a variable declaration. Facts about how the variable is used, its bounds, its legal values, its implied/displayed number of decimal points, its units of measure, its display format, its data entry rules (e.g. total fill, must enter), when its value can be trusted etc. should be gleaned from the procedural code. If your boss forces you to write comments, lard method bodies with them, but never comment a variable declaration, not even a temporary!
+**絕不**在宣告變數時註解。Facts about how the variable is used, its bounds, its legal values, its implied/displayed number of decimal points, its units of measure, its display format, its data entry rules (e.g. total fill, must enter), when its value can be trusted etc. should be gleaned from the procedural code. If your boss forces you to write comments, lard method bodies with them, but never comment a variable declaration, not even a temporary!
 
 #### Disparage In the Comments
 
