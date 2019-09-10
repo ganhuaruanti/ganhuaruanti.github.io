@@ -1,11 +1,9 @@
 ---
 layout: post
-title: Laravel TDD 教材
+title: 你不需要 GUI
 author: flamerecca
 tags: [blog]
 ---
-# 你不需要 GUI
-
 <details>
 It's for noobs :)
 </details>
