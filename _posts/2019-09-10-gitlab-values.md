@@ -1,8 +1,14 @@
-# CREDIT
+---
+layout: post
+title: GitLab Values 翻譯
+author: flamerecca
+tags: [blog]
+---
+## CREDIT
 
 GitLab 的六個價值是合作（Collaboration），結果（Results），效率（Efficiency），多元（Diversity），迭代（Iteration）和透明（Transparency）。這六個字拼成 CREDIT 作為我們送給各位的禮物。這些價值觀是相互關聯的，彼此之間互相合作以保護我們公司的文化。下面逐一解釋這些價值觀的操作方式：
 
-## 合作
+### 合作
 
 即使對目標沒有立即性的幫助，幫助別人應該是首要項目。相同的，你可以依靠別人的協助與意見 - 事實上你也應該要這樣。
 每個人，包含不在 gitlab 公司工作的人，都可以對任何專案提意見。對專案負責的人決定專案要怎麼做，但是他應該要認真看待其他人的意見，並解釋為什麼之前有或者沒有這麼做。
@@ -23,7 +29,7 @@ GitLab 的六個價值是合作（Collaboration），結果（Results），效�
 1. **無責難的解決問題** 檢討問題時需將焦點放在情境本身，應聚焦在產生錯誤的機制，以及影響做出問題決策的過程，而不要一昧的責怪別人或團隊。我們相信因為有[免責的檢討](https://codeascraft.com/2012/05/22/blameless-postmortems/)和[回顧](handbook/engineering/management/team-retrospectives/)，利害關係者會提供看法和意見，而不必擔心受到懲處或報應。
 1. **用自己的產品** 我們[用我們自己的產品](https://en.wikipedia.org/wiki/Eating_your_own_dog_food)。開發 GitLab CE 和 EE 專案時，我們使用 GitLab.com 來管理整個產品的 DevOps 週期。這本手冊是用 GitLab 協作完成的。另外我們也將其他內容和流程透過 Git repos 處理並使用 GitLab 進行管理。
 
-## 結果
+### 結果
 
 我們履行對彼此，客戶，使用者以及投資者的承諾。
 
@@ -37,7 +43,7 @@ GitLab 的六個價值是合作（Collaboration），結果（Results），效�
 1. **野心** 雖然我們以最小的改變迭代進行，但是我們都渴望大的，有野心的結果。
 1. **對行動的偏好** 專注針對行動分常重要，而不是落入一直分析狀況的陷阱，或者堅持走沒有風險，安靜緩慢的道路。決策應該想得很周全沒錯，但是要能盡快送出成果，我們應該大膽接受偶爾會犯錯的可能。我們對行動的偏好可以幫助我們在犯錯時快速回到正軌。
 
-## 效率
+### 效率
 
 我們關心的是知道是否朝正確的方向前進，不做多餘的事，並且避免工作重複。這將能幫助我們取得更多進展，工作變得充實有意義。
 
@@ -55,7 +61,7 @@ GitLab 的六個價值是合作（Collaboration），結果（Results），效�
 1. **接受錯誤** 每個問題的背後，並非都需要用創造新的流程的方式來避免錯誤。額外添加的流程可能導致操作效率降低，而一個錯誤只影響一個操作。
 1. **部署最小可行性修改，快速應變** 我們藉每月快速迭代持續改進。如果任務太大，無法在一個月內完成，請縮小範圍。
 
-## 多元化
+### 多元化
 
 來自世界各地的社群成員，他們有不同背景和多元觀點。我們招聘全球人才，並鼓勵聘用具有不同國家背景的人，深化團隊的多元化。我們致力讓每個人都感到自己是受到歡迎的，並增加代表不足的少數族裔和國籍在我們的社群和公司中的參與。例如，贊助舉辦[多元化活動](https://about.gitlab.com/2016/03/24/sponsorship-update/)，以及提供[雙倍的員工推薦獎金](https://about.gitlab.com/handbook/incentives/#referral-bonuses)。
 
@@ -71,7 +77,7 @@ GitLab 的六個價值是合作（Collaboration），結果（Results），效�
 1. **看到什麼，說什麼** 作為一家布局全球的公司，我們的員工來自不同背景和文化。這意味著每個人都必須更加敏銳的判斷，是否有彼此尊重和互相包容。同時，我們偶爾可能會犯錯。重要的是，團隊成員能在犯錯時提醒我們，我們可以從錯誤中學習，並且能更加理解持有不同的意見的人的想法。同樣重要的是，團隊成員不會因此感到排外或覺得被輕視，而是將焦點放在我們溝通的用詞和所做的事情。因此，當看到有不尊重別人或缺乏包容性的行為時，我們都需要說出來。如果有人說蠢話，你需要告訴他們，並幫助他們理解為什麼這樣說是不好的。
 1. **神經多樣性的人才** [神經多樣性（Neurodiversity）](http://neurocosmopolitanism.com/neurodiversity-some-basic-terms-definitions/)指一種多樣性，包括自閉症、注意力不足過動症（簡稱ADHD）和其他神經衰弱功能。他們經常具有[獨特的技能和能力](https://adhdatwork.add.org/potential-benefits-of-having-an-adhd-employee/)，可以利用這些技能和能力來獲得[競爭優勢](https://hbr.org/2017/05/neurodiversity-as-a-competitive-advantage)，但是神經衰弱的人也經常受到歧視，有時候因傳統的人事招募流程設計，難以爭取錄取的機會。這些人應該要能用 GitLabbers 社群的一份子的身份貢獻。手冊指南、價值觀、策略，以及工作面試招募流程等，皆不應歧視神經多元性的人才。
 
-## 迭代
+### 迭代
 
 我們做[盡可能小的事情，並且盡可能快推出](/2017/01/04/behind-the-scenes-how-we-built-review-apps/)。如果你有個提案在第一次迭代中可以排除在外，並且可以變成單獨的 Issue ，則不要寫成一個巨大的提案，只要寫第一步即可。相信你在東西推出之後，會更知道如何進行下一步。如果你在第一次迭代中，覺得你推出的功能太小因而感到羞恥，那你就做對了。這個價值是人們剛加入 GitLab 時最常低估的，你工作過程和產出的影響力會比你原先預期的大。快速做決策，並看事情在很少討論之下改變，在一開始會感到十分痛苦。但頻繁推出最簡單的版本，最終結果會是最好的。
 
@@ -89,7 +95,7 @@ GitLab 的六個價值是合作（Collaboration），結果（Results），效�
 1. **做那些不會規模化的事情** 優先優化速度與產出，產出成功再來講究如何規模化。 [Paul Graham 的文章](http://paulgraham.com/ds.html) 有良好範例。
 1. **不要為了雙向門等待** 大多數的決策都是可逆的，讓[直接負責人（Directly Responsible Individual）](https://about.gitlab.com/handbook/people-operations/directly-responsible-individuals/) 不須核准就去做決策。如 [Jeff Bezos 所說](http://minimumviablestrategy.com/lessons/leadership/one-way-and-two-way-door-decisions/)，只有不可逆的決策，才需要決策流程。
 
-## 透明
+### 透明
 
 盡可能地保持公開透明。做事公開透明，可以降低貢獻的門檻，並能夠更容易地促進協作。一個例子是，[此網站的公開專案儲存庫（repository）](https://gitlab.com/gitlab-com/www-gitlab-com/)，內容也包含了[公司手冊](https://about.gitlab.com/handbook/)。我們所有做的事情都是預設公開的。例如，[GitLab CE 社群版](https://gitlab.com/gitlab-org/gitlab-ce/issues)和 [GitLab EE 企業版](https://gitlab.com/gitlab-org/gitlab-ee/issues)問題追蹤系統，以及[行銷](https://gitlab.com/gitlab-com/marketing/issues)和[基礎設施](https://gitlab.com/gitlab-com/infrastructure/issues)。管理透明化為GitLab提升意識，可以招募到關心我們文化的人，幫助公司可以更佳運用外部資源，且更快的得到回饋，並可以更容易地互相合作。同時，秉持著開源的精神，與全世界的人共享優秀的軟體、文件、實例、學習資源和開發過程，因我們相信，這些公開開放出來的資訊，所創造的價值遠超過其看得到的價值本身。但也有例外。預設不公開的素材會記錄在[一般準則](https://about.gitlab.com/handbook/general-guidelines/)中。個人層面來看，你應該將想法表達出來，而不是擺出一張撲克臉。不要害怕承認犯錯或做錯事。當出現問題時，這是一個很好的思考機會，「有什麼可以[改善](https://en.wikipedia.org/wiki/Kaizen)的？」，找到更好的面對方式，而不傷害彼此情誼。
 1. **預設公開** GitLab所有的內容都是預設公開的。
@@ -99,7 +105,7 @@ GitLab 的六個價值是合作（Collaboration），結果（Results），效�
 1. **不同意但執行** 一切都可以被質疑，但只要做了決定，我們會期望團隊投入執行，這是[共同原則](https://ryanestis.com/leadership/disagree-and-commit-to-get-things-done/)。
 1. **在真正困難的地方選擇公開透明，透明才有價值**. 例如，在美國加州，許多公司都不會告訴你沒有錄取的真正原因，因為這將會增加被求職者投訴，採取法律途徑的可能。我們希望只用正當原因拒絕求職者，並希望他們因著得到我們的回饋有成長的機會。因此，我們會接受告訴應徵者我們的想法所增加的風險，希望透過說出我們的想法，用高標準檢視決策過程以及所做的事。另一個例子是對[資訊安全事件](http://disq.us/p/1r9gceh)保持公開透明。
 
-# 五種功能障礙
+## 五種功能障礙
 
 我們的價值觀幫我們避免 [五種功能障礙](https://en.wikipedia.org/wiki/The_Five_Dysfunctions_of_a_Team#Summary).
 
@@ -112,14 +118,14 @@ GitLab 的六個價值是合作（Collaboration），結果（Results），效�
 有的功能障礙並沒有直接在我們的價值觀內點出，比方說信任並不是價值觀之一。
 就像快樂一樣，信任是屬於結果，不是你可以直接獲得的。與其直接規範要大家互相信任，我們希望透過我們工作上的方式和價值觀，可以取得彼此的信任；信任要努力去贏取，而不要寄望平白無故獲得。
 
-# 為什麼要建立價值觀
+## 為什麼要建立價值觀
 
 我們的價值觀提供我們實際可行的行為規範。
 這些價值觀幫助我們說明我們對僱用的人所預期的行為。
 這些價值觀幫助我們弄清楚在組織內該如何行動，並且該如何預期對方的行為。
 Values are a framework for distributed decision making, they allow you to determine what to do without asking your manager.
 
-# 架構
+## 架構
 
 有些時候，價值觀之間會彼此衝突。舉例來說，依據透明這個價值觀，我們找到系統安全漏洞時應該要立刻公開，但是這會危害我們的使用者。It's useful to keep in mind this hierarchy to resolve confusion about what to do in a specific circumstance, while remaining consistent with our core values.
 
@@ -145,13 +151,13 @@ Values are a framework for distributed decision making, they allow you to determ
   </tr>
 </table>
 
-# 價值觀更新
+## 價值觀更新
 
 我們的價值觀會隨著需要持續更新，所有人都歡迎提供建議。要提供建議的話，可以開一個 merge request 並且分配給 CEO。
 
 如果你是[團隊成員](/team/)或者在[核心團隊](/core-team/)裡面，請透過 #values 頻道 轉貼連接給 MR。如果你不是團隊成員，請傳 Twitter 訊息給[@sytses](https://twitter.com/sytses).
 
-# 如何加強我們的價值觀
+## 如何加強我們的價值觀
 
 你所獎勵的項目就會成為你團隊追求的價值觀。我們透過以下行為讓我們的價值觀生根在團隊內：
 
@@ -163,7 +169,7 @@ Values are a framework for distributed decision making, they allow you to determ
 1. 由我們稱讚的行為
 1. 由我們辭退對方時所看的項目
 
-# 准許參與
+## 准許參與
 
 在我們的價值觀裡，我們有一些明顯要遵守的行為沒有列入。這些我們稱為准許參與（permission to play）的行為
 
@@ -174,10 +180,10 @@ Values are a framework for distributed decision making, they allow you to determ
 - 做對公司、團隊成員、客戶、用戶、投資者最有利的事情
 - 做事要合法
 
-# Question from new team members
+## Question from new team members
 
 During every [GitLab 101 session with new hires](/culture/gitlab-101/) we discuss our values. We document the questions and answers to [Frequently Asked Questions about the GitLab Culture](/culture/gitlab-101/#frequently-asked-questions-about-the-gitlab-culture).
 
-# 理念
+## 理念
 
 Our [mission](/strategy/#mission) guides our path, during this path live our values.
