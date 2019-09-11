@@ -29,7 +29,7 @@ It's for noobs :)
 1. [合併資料夾](#合併資料夾)
 1. [建立新檔案](#建立新檔案)
 1. [建立新資料夾](#建立新資料夾)
-1. [顯示檔案／資料夾大小](#顯示檔案／資料夾大小)
+1. [顯示檔案/資料夾大小](#%E9%A1%AF%E7%A4%BA%E6%AA%94%E6%A1%88%2F%E8%B3%87%E6%96%99%E5%A4%BE%E5%A4%A7%E5%B0%8F)
 1. [開啟檔案](#開啟檔案)
 1. [壓縮資料夾](#壓縮資料夾)
 1. [解壓縮資料夾](#解壓縮資料夾)
@@ -148,7 +148,9 @@ mkdir 'untitled folder'
 mkdir -p 'path/may/not/exist/untitled folder'
 ```
 
-## 顯示檔案／資料夾大小
+<span id="顯示檔案/資料夾大小"></span>
+
+## 顯示檔案/資料夾大小
 
 **STOP RIGHT CLICK AND SHOW FILE/FOLDER INFO** :-1:
 
