@@ -25,21 +25,21 @@ It's for noobs :)
 1. [移動檔案](#移動檔案)
 1. [重命名檔案](#重命名檔案)
 1. [移動資料夾](#移動資料夾)
-1. [重命名資料夾](#重命名資料夾)
+1. [重新命名檔案](#重新命名檔案)
 1. [合併資料夾](#合併資料夾)
 1. [建立新檔案](#建立新檔案)
 1. [建立新資料夾](#建立新資料夾)
-1. [顯示檔案／資料夾大小](#顯示檔案／資料夾大小)
-1. [開啟檔案](#open-a-file-with-the-default-program)
+1. [顯示檔案/資料夾大小](#顯示檔案/資料夾大小)
+1. [開啟檔案](#開啟檔案)
 1. [壓縮資料夾](#壓縮資料夾)
 1. [解壓縮資料夾](#解壓縮資料夾)
-1. [刪除檔案](#刪除檔案)
-1. [刪除資料夾](#刪除資料夾)
+1. [移除檔案](#移除檔案)
+1. [移除資料夾](#移除資料夾)
 1. [列出資料夾內容](#列出資料夾內容)
-1. [tree view a folder and its subfolders](#tree-view-a-folder-and-its-subfolders)
-1. [find a stale file](#find-a-stale-file)
-1. [顯示日曆](#show-a-calendar)
-1. [查看未來日期](#find-a-future-date)
+1. [樹狀顯示目錄與子目錄](#樹狀顯示目錄與子目錄)
+1. [找舊檔案](#找舊檔案)
+1. [顯示日曆](#顯示日曆)
+1. [查看未來日期](#查看未來日期)
 1. [計算機](#計算機)
 1. [強制關閉程式](#強制關閉程式)
 
@@ -191,7 +191,7 @@ unzip archive_name.zip
 rm my_useless_file
 ```
 
-重要：The rm command deletes my_useless_file permanently, which is equivalent to move my_useless_file to Recycle Bin and hit Empty Recycle Bin.
+重要：使用 `rm` 命令會永久刪除 `my_useless_file`，相當於移動到資源回收桶並清理。
 
 ## 移除資料夾
 
@@ -209,7 +209,7 @@ rm -r my_useless_folder
 ls -la my_folder
 ```
 
-## tree view a folder and its subfolders
+## 樹狀顯示目錄與子目錄
 
 **STOP OPENING YOUR FINDER OR FILE EXPLORER** :-1:
 
@@ -228,7 +228,7 @@ find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'     # on MacOS
 find my_folder -mtime +5
 ```
 
-## 看日曆
+## 顯示日曆
 
 **STOP LOOKING UP WHAT THIS MONTH LOOKS LIKE BY CALENDAR WIDGETS** :-1:
 顯示文字版的日曆
@@ -237,11 +237,11 @@ find my_folder -mtime +5
 cal
 ```
 
-## 看未來的日期
+## 查看未來日期
 
 **STOP USING WEBAPPS TO CALCULATE FUTURE DATES** :-1:
 
- 想看今天的日期？
+想看今天的日期？
 
 ```shell
 date +%m/%d/%Y
@@ -258,7 +258,7 @@ date -j -v+7d                                              # on MacOS
 
 **STOP USING CALCULATOR WIDGET** :-1:
 
-Want to use a calculator?
+想要使用計算機嗎?
 
 ```shell
 bc
