@@ -37,3 +37,14 @@ img.post-author-avatar {
   color: #b5e853;
   text-decoration: none;
 }
+
+/**
+ * fix `./` overflow problem
+ * max-width is 800px because margin is -40px and container is 90%
+ * 40 * 2 / (100 - 90) * 100 = 800
+ */
+@media (max-width: 800px) {
+  .site_title {
+    margin: 0;
+  }
+}
