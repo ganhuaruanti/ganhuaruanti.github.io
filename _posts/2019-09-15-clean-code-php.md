@@ -53,14 +53,17 @@ tags: [blog]
 
 ## 介紹
 
-本文參考自 Robert C. Martin的[*Clean Code*](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)  書中的軟件工程師的原則
-,適用於PHP。 這不是風格指南。 這是一個關於開發可讀、可復用並且可重構的PHP軟件指南。
+本文參考自 Robert C. Martin 的[*Clean Code*](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)  書中，針對軟體工程師的原則，適用於PHP。
 
-並不是這裡所有的原則都得遵循，甚至很少的能被普遍接受。 這些雖然只是指導，但是都是*Clean Code*作者多年總結出來的。
+這篇文章不是風格指南。 這是一個關於開發可讀、可復用並且可重構的PHP軟件指南。
+
+並不是這裡所有的原則都必須遵循，這些原則只有很少能得到所有人的認同。
+
+這些原則雖然只是指導，但是都是 *Clean Code* 作者多年總結出來的。
 
 本文受到 [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript) 的啟發
 
-雖然很多開發者還在使用PHP5，但是本文中的大部分示例的運行環境需要PHP 7.1+。
+雖然很多開發者還在使用 PHP5，但是本文中的大部分示例的運行環境需要 PHP 7.1+。
 
 ## 翻譯說明
 
@@ -86,7 +89,7 @@ $currentDate = $moment->format('y-m-d');
 
 **[⬆ 返回頂部](#目錄)**
 
-### 同一個實體要用相同的變數名
+### 同一個類型的變數要用相同的單字
 
 **壞：**
 
@@ -107,7 +110,7 @@ getUser();
 
 ### 使用便於搜索的名稱 (part 1)
 
-寫代碼是用來讀的。所以寫出可讀性高、便於搜索的代碼至關重要。命名變數時如果沒有有意義、不好理解，那就是在傷害讀者。請讓你的代碼便於搜索。
+程式碼是用來讀的。所以寫出可讀性高、便於搜索的程式碼至關重要。命名變數時如果沒有有意義、不好理解，那就是在傷害讀者。請讓你的程式碼便於搜索。
 
 **壞：**
 ```php
@@ -181,7 +184,7 @@ saveCityZipCode($matches[1], $matches[2]);
 
 **不錯：**
 
-好一些，但強依賴於正則表達式的熟悉程度
+好一些，但強依賴於開發者對正則表達式的熟悉程度
 
 ```php
 $address = 'One Infinite Loop, Cupertino 95014';
@@ -208,7 +211,7 @@ saveCityZipCode($matches['city'], $matches['zipCode']);
 
 ### 避免深層嵌套，盡早返回 (part 1)
 
-太多的if else語句通常會導致你的代碼難以閱讀，直白優於隱晦
+太多的if else語句通常會導致你的程式碼難以閱讀，直白的程式碼優於隱晦的
 
 **糟糕：**
 
@@ -299,7 +302,7 @@ function fibonacci(int $n): int
 
 ### 少用無意義的變數名
 
-別讓讀你的代碼的人猜你寫的變數是什麼意思。
+別讓讀你的程式碼的人猜你寫的變數是什麼意思。
 寫清楚好過模糊不清。
 
 **壞：**
@@ -338,7 +341,7 @@ foreach ($locations as $location) {
 
 ### 不要添加不必要上下文
 
-如果從你的類名、對像名已經可以得知一些信息，就別再在變數名裡重複。
+如果從你的類別名、對像名已經可以得知一些訊息，就別在變數名內重複。
 
 **壞：**
 
@@ -368,7 +371,7 @@ class Car
 
 **[⬆ 返回頂部](#目錄)**
 
-### 合理使用參數默認值，沒必要在方法裡再做默認值檢測
+### 合理使用參數預設值，沒必要在方法裡再做預設值檢測
 
 **不好：**
 
@@ -395,7 +398,7 @@ function createMicrobrewery($name = null): void
 
 **好：**
 
-如果你的程序只支持 PHP 7+, 那你可以用 [type hinting](http://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration) 保證變數 `$breweryName` 不是 `NULL`.
+如果你的程序只支持 PHP 7+，那你可以用 [type hinting](http://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration) 保證變數 `$breweryName` 不是 `NULL`.
 
 ```php
 function createMicrobrewery(string $breweryName = 'Hipster Brew Co.'): void
@@ -412,7 +415,7 @@ function createMicrobrewery(string $breweryName = 'Hipster Brew Co.'): void
 
 **不好：**
 
-簡易對比會將字符串轉為整形
+簡易對比會轉型後比對
 
 ```php
 $a = '42';
@@ -424,7 +427,7 @@ if( $a != $b ) {
 ```
 
 對比 $a != $b 返回了 `FALSE` 但應該返回 `TRUE` !
-字符串 '42' 跟整數 42 不相等
+字串 '42' 跟整數 42 不相等
 
 **好：**
 
@@ -439,7 +442,7 @@ if ($a !== $b) {
 }
 ```
 
-The comparison `$a !== $b` returns `TRUE`.
+`$a !== $b` 比對會回傳 `TRUE`.
 
 **[⬆ 返回頂部](#目錄)**
 
@@ -447,9 +450,11 @@ The comparison `$a !== $b` returns `TRUE`.
 
 ### 函式參數（最好少於2個）
 
-限制函式參數個數極其重要，這樣測試你的函式容易點。有超過3個可選參數參數導致一個爆炸式組合增長，你會有成噸獨立參數情形要測試。
+限制函式參數個數極其重要，這樣測試你的函式會更容易。有超過三個可選參數，會導致一個爆炸式組合增長，你會有成噸的獨立參數情形要測試。
 
-無參數是理想情況。1個或2個都可以，最好避免3個。再多就需要加固了。通常如果你的函式有超過兩個參數，說明他要處理的事太多了。 如果必須要傳入很多數據，建議封裝一個高級別對像作為參數。
+無參數是理想情況。1個或2個都可以，最好避免3個。再多就需要重構了。通常，如果你的函式有超過兩個參數，說明他要處理的事太多了。
+
+如果必須要傳入很多數據，建議封裝一個高級別對像作為參數。
 
 **壞：**
 
@@ -487,7 +492,13 @@ function createMenu(MenuConfig $config): void
 
 ### 函式應該只做一件事
 
-這是迄今為止軟件工程裡最重要的一個規則。當一個函式做超過一件事的時候，他們就難於實現、測試和理解。當你把一個函式拆分到只剩一個功能時，他們就容易被重構，然後你的代碼讀起來就更清晰。如果你光遵循這條規則，你就領先於大多數開發者了。
+這是迄今為止，軟體工程裡最重要的一個規則。
+
+當一個函式做超過一件事的時候，他們就難於實現、測試和理解。
+
+當你把一個函式拆分到只剩一個功能時，他們就容易被重構，然後你的程式碼讀起來就更清晰。
+
+光遵循這條規則，你就領先於大多數開發者了。
 
 **壞：**
 
@@ -543,7 +554,7 @@ class Email
 }
 
 $message = new Email(...);
-// 啥？handle處理一個消息干嘛了？是往一個文件裡寫嗎？
+// 啥？handle 處理一個消息幹嘛了？是往一個文件裡寫嗎？
 $message->handle();
 ```
 
@@ -567,15 +578,14 @@ $message->send();
 
 **[⬆ 返回頂部](#目錄)**
 
-### 函式裡應當只有一層抽像abstraction
+### 函式裡應當只有一層抽像（abstraction）
 
-當你抽像層次過多時時，函式處理的事情太多了。需要拆分功能來提高可重用性和易用性，以便簡化測試。
-（譯者注：這裡從示例代碼看應該是指嵌套過多）
+當你抽像層次過多時，函式處理的事情太多了。需要拆分功能來提高可重用性和易用性，以便簡化測試。
 
 **壞：**
 
 ```php
-function parseBetterJSAlternative(string $code): void
+function parseBetterPHPAlternative(string $code): void
 {
     $regexes = [
         // ...
@@ -602,7 +612,7 @@ function parseBetterJSAlternative(string $code): void
 
 **壞：**
 
-我們把一些方法從循環中提取出來，但是`parseBetterJSAlternative()`方法還是很復雜，而且不利於測試。
+我們把一些事情從函式中提取出來，但是`parseBetterPHPAlternative()`方法還是很複雜，而且不利於測試。
 
 ```php
 function tokenize(string $code): array
@@ -632,7 +642,7 @@ function lexer(array $tokens): array
     return $ast;
 }
 
-function parseBetterJSAlternative(string $code): void
+function parseBetterPHPAlternative(string $code): void
 {
     $tokens = tokenize($code);
     $ast = lexer($tokens);
@@ -644,7 +654,7 @@ function parseBetterJSAlternative(string $code): void
 
 **好：**
 
-最好的解決方案是把 `parseBetterJSAlternative()`方法的依賴移除。
+最好的解決方案是把這些功能移出 `parseBetterPHPAlternative()` 所在的類別。
 
 ```php
 class Tokenizer
@@ -702,13 +712,11 @@ class BetterJSAlternative
 }
 ```
 
-這樣我們可以對依賴做mock，並測試`BetterJSAlternative::parse()`運行是否符合預期。
-
 **[⬆ 返回頂部](#目錄)**
 
-### 不要用flag作為函式的參數
+### 不要用 flag 作為函式的參數
 
-flag就是在告訴大家，這個方法裡處理很多事。前面剛說過，一個函式應當只做一件事。 把不同flag的代碼拆分到多個函式裡。
+flag 就是在告訴大家，這個方法裡處理很多事。前面剛說過，一個函式應當只做一件事。 把不同flag的代碼拆分到多個函式裡。
 
 **壞：**
 ```php
@@ -739,17 +747,20 @@ function createTempFile(string $name): void
 
 ### 避免副作用
 
-一個函式做了比獲取一個值然後返回另外一個值或值們會產生副作用如果。副作用可能是寫入一個文件，修改某些全局變數或者偶然的把你全部的錢給了陌生人。
+如果一個函式做了比讀取輸入，然後回傳一筆或多筆輸出，要更多的事情的話，那就會產生副作用。副作用可能是寫入某個檔案，修改某個全域變數，或者不小心把全部的錢都給了陌生人。
 
-現在，你的確需要在一個程序或者場合裡要有副作用，像之前的例子，你也許需要寫一個文件。你想要做的是把你做這些的地方集中起來。不要用幾個函式和類來寫入一個特定的文件。用一個服務來做它，一個只有一個。
+有時候，你確實會需要副作用，比方說剛剛的例子，你或許真的需要在輸出資料的同時寫入某個文件。我們該做的事情，是集中做這些事情的位置，不要有好幾個不同的類別或者函式，都寫入同一個檔案。找個 Service 物件來處理，而且只產生一個。
 
-重點是避免常見陷阱比如對像間共享無結構的數據，使用可以寫入任何的可變數據類型，不集中處理副作用發生的地方。如果你做了這些你就會比大多數程序員快樂。
+這邊的重點是，要避免副作用常見的陷阱，例如說毫無結構化的分享物件間的狀態，或者使用任何人都可能改寫的可變形態資料⋯⋯等
+
+如果做到這點，你會比大多數工程師要快樂。
+
 
 **壞：**
 
 ```php
-// Global variable referenced by following function.
-// If we had another function that used this name, now it'd be an array and it could break it.
+// 被其他函式改變型態的全域變數
+// 如果我們在 splitIntoFirstAndLastName() 之後使用這個名稱，我們會拿到陣列而不是字串，可能會導致程式當機
 $name = 'Ryan McDermott';
 
 function splitIntoFirstAndLastName(): void
@@ -781,11 +792,11 @@ var_dump($newName); // ['Ryan', 'McDermott'];
 
 **[⬆ 返回頂部](#目錄)**
 
-### 不要寫全局函式
-在大多數語言中污染全局變數是一個壞的實踐，因為你可能和其他類庫衝突
-並且調用你api的人直到他們捕獲異常才知道踩坑了。讓我們思考一種場景：
-如果你想配置一個數組，你可能會寫一個全局函式`config()`，但是他可能
-和試著做同樣事的其他類庫衝突。
+### 不要寫全域函式
+
+在大多數語言中，污染全域的任何東西都是一個壞的做法，因為你可能和其他類別衝突，並且調用你 api 的人要一直到他們捕獲異常，才知道踩坑了。
+
+讓我們思考一種場景：如果你想用一個陣列來設置環境，你可能會寫一個全域函式 `config()`。但是，這可能和試著做同樣事的其他類庫衝突。
 
 **壞：**
 
@@ -817,7 +828,7 @@ class Configuration
 }
 ```
 
-加載配置並創建 `Configuration` 類的實例
+加載配置，並建立 `Configuration` 類的實例
 
 ```php
 $configuration = new Configuration([
@@ -831,13 +842,13 @@ $configuration = new Configuration([
 
 ### 不要使用單例模式
 
-單例是一種 [反模式](https://en.wikipedia.org/wiki/Singleton_pattern).  以下是解釋：Paraphrased from Brian Button:
- 1. 總是被用成全局實例。They are generally used as a **global instance**, why is that so bad? Because **you hide the dependencies** of your application in your code, instead of exposing them through the interfaces. Making something global to avoid passing it around is a [code smell](https://en.wikipedia.org/wiki/Code_smell).
- 2. 違反了[單一響應原則]()They violate the [single responsibility principle](#single-responsibility-principle-srp): by virtue of the fact that **they control their own creation and lifecycle**.
- 3. 導致代碼強耦合They inherently cause code to be tightly [coupled](https://en.wikipedia.org/wiki/Coupling_%28computer_programming%29). This makes faking them out under **test rather difficult** in many cases.
- 4. 在整個程序的生命周期中始終攜帶狀態。They carry state around for the lifetime of the application. Another hit to testing since **you can end up with a situation where tests need to be ordered** which is a big no for unit tests. Why? Because each unit test should be independent from the other.
-
-這裡有一篇非常好的討論單例模式的[根本問題((http://misko.hevery.com/2008/08/25/root-cause-of-singletons/)的文章，是[Misko Hevery](http://misko.hevery.com/about/) 寫的。
+單例（Singleton）是一種 [反模式](https://en.wikipedia.org/wiki/Singleton_pattern).  以下是解釋：
+ 1. 總是被用成**全域實例**。為什麼這很糟？因為你在程式碼裡面隱藏了**相依的對象**，而不是透過實作了哪些介面而標記出來。讓個東西是全域來避免這個東西被傳來傳去是一種[壞味道](https://en.wikipedia.org/wiki/Code_smell)。
+ 2. 違反了[單一職責原則](#single-responsibility-principle-srp)：本質上，單例模式必定會**控制自己的建立，同時控制自己的生命週期**。所以這個模式先天就違反了單一職責原則。
+ 3. 導致程式碼強[耦合](https://en.wikipedia.org/wiki/Coupling_%28computer_programming%29)：這導致很多情況下，在測試中假造他們**非常困難**。
+ 4. 在整個程式的生命週期中，始終攜帶狀態。這是另一個對測試的重大打擊，因為這會導致你的測試最終會有前後順序，而這對單元測試是很致命的。為什麼？因為每個單元測試都應該獨立於其他的單元測試。
+ 
+這裡有一篇討論單例模式[根本問題](http://misko.hevery.com/2008/08/25/root-cause-of-singletons/) 很好的文章，是[Misko Hevery](http://misko.hevery.com/about/) 寫的。
 
 **壞：**
 
@@ -880,7 +891,7 @@ class DBConnection
 }
 ```
 
-創建 `DBConnection` 類的實例並通過 [DSN](http://php.net/manual/en/pdo.construct.php#refsect1-pdo.construct-parameters) 配置.
+建立 `DBConnection` 類的實例，並通過 [DSN](http://php.net/manual/en/pdo.construct.php#refsect1-pdo.construct-parameters) 配置.
 
 ```php
 $connection = new DBConnection($dsn);
@@ -943,12 +954,11 @@ if (isDOMNodePresent($node)) {
 
 ### 避免條件判斷
 
-這看起來像一個不可能任務。當人們第一次聽到這句話是都會這麼說。
-"沒有`if語句`我還能做啥？" 答案是你可以使用多態來實現多種場景
-的相同任務。第二個問題很常見， “這麼做可以，但為什麼我要這麼做？”
- 答案是前面我們學過的一個Clean Code原則：一個函式應當只做一件事。
- 當你有很多含有`if`語句的類和函式時,你的函式做了不止一件事。
- 記住，只做一件事。
+這看起來像一個不可能的任務。當人們第一次聽到這句話是都會這麼說。「沒有 `if語句` 我還能做啥？」 答案是，你可以使用多態來實現多種場景的相同任務。
+
+第二個問題也很常見，「這麼做可以，但為什麼我要這麼做？」答案是前面我們學過的一個 Clean Code 原則：一個函式應當只做一件事。當你有很多含有`if`語句的類和函式時,你的函式做了不止一件事。
+
+記住，只做一件事。
 
 **壞：**
 
@@ -1016,9 +1026,9 @@ class Cessna implements Airplane
 
 ### 避免類型檢查 (part 1)
 
-PHP是弱類型的,這意味著你的函式可以接收任何類型的參數。
-有時候你為這自由所痛苦並且在你的函式漸漸嘗試類型檢查。
-有很多方法去避免這麼做。第一種是統一API。
+PHP 是弱型別的，這意味著你的函式可以接收任何類型的參數。有時候你會為了這自由度所痛苦，並且在你的函式漸漸加入型態檢查。
+
+有很多方法可以避免這麼做。第一種方法是統一 API。
 
 **壞：**
 
@@ -1046,11 +1056,12 @@ function travelToTexas(Vehicle $vehicle): void
 
 ### 避免類型檢查 (part 2)
 
-如果你正使用基本原始值比如字符串、整形和數組，要求版本是PHP 7+，不用多態，需要類型檢測，
-那你應當考慮[類型聲明](http://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)或者嚴格模式。
-提供了基於標准PHP語法的靜態類型。 手動檢查類型的問題是做好了需要好多的廢話，好像為了安全就可以不顧損失可讀性。
-保持你的PHP 整潔，寫好測試，做好代碼回顧。做不到就用PHP嚴格類型聲明和嚴格模式來確保安全。
+如果你正使用基本原始值，比如字符串、整數和陣列等等，要求版本是PHP 7+，無法使用多型別，但還是需要類型檢測，那你可以考慮使用[型態宣告](http://php.net/manual/en/functions.arguments.php#functions.arguments.type-declaration)或者嚴格模式。
 
+這樣可以基於標準 PHP 語法，又增加型態的檢查。手動檢查類型的問題，是需要加上很多的檢查程式碼，但是所增加的安全性並不足以彌補所喪失的可讀性。
+ 
+要避免類型檢查，保持程式碼整潔，寫好測試，並常常做好 code reviews。不然，就加上 PHP 靜態型別檢查或者嚴格模式。
+ 
 **壞：**
 
 ```php
@@ -1077,8 +1088,8 @@ function combine(int $val1, int $val2): int
 
 ### 移除僵屍代碼
 
-僵屍代碼和重複代碼一樣壞。沒有理由保留在你的代碼庫中。如果從來沒被使用過，就刪掉！
-因為還在代碼版本庫裡，因此很安全。
+程式碼代碼和重複程式碼一樣糟糕。沒有理由保留在你的程式中。如果從來沒被使用過，就刪掉！
+不用擔心這些程式碼之後還會用到，因為些程式碼還在版控裡面，因此很安全。
 
 **壞：**
 ```php
@@ -1120,11 +1131,11 @@ inventoryTracker('apples', $request, 'www.inventory-awesome.io');
 * 當你想對對像屬性做獲取之外的操作時，你不需要在代碼中去尋找並修改每一個該屬性訪問方法
 * 當有`set`對應的屬性方法時，易於增加參數的驗證
 * 封裝內部的表示
-* 使用set*和get*時，易於增加日志和錯誤控制
-* 繼承當前類時，可以復寫默認的方法功能
-* 當對像屬性是從遠端服務器獲取時，get*，set*易於使用延遲加載
+* 使用set* 和 get* 時，易於增加 Log 和錯誤控制
+* 繼承當前類別時，可以覆寫默認的方法功能
+* 當對像屬性是從遠端服務器獲取時，get* ，set* 易於使用延遲加載
 
-此外，這樣的方式也符合OOP開發中的[開閉原則](#開閉原則)
+此外，這樣的方式也符合 OOP 開發中的[開閉原則](#開閉原則)
 
 **壞：**
 
@@ -1191,7 +1202,7 @@ $balance = $bankAccount->getBalance();
 
 所以，當你需要控制類裡的代碼可以被訪問時才用`public/protected`，其他時候都用`private`。
 
-可以讀一讀這篇 [博客文章](http://fabien.potencier.org/pragmatism-over-theory-protected-vs-private.html) ，[Fabien Potencier](https://github.com/fabpot)寫的.
+可以讀一讀這篇 [文章](http://fabien.potencier.org/pragmatism-over-theory-protected-vs-private.html) ，[Fabien Potencier](https://github.com/fabpot)寫的.
 
 **壞：**
 
@@ -1238,17 +1249,16 @@ echo 'Employee name: '.$employee->getName(); // Employee name: John Doe
 
 ### 少用繼承多用組合
 
-正如  the Gang of Four 所著的[*設計模式*](https://en.wikipedia.org/wiki/Design_Patterns)之前所說，
-我們應該盡量優先選擇組合而不是繼承的方式。使用繼承和組合都有很多好處。
-這個准則的主要意義在於當你本能的使用繼承時，試著思考一下`組合`是否能更好對你的需求建模。
-在一些情況下，是這樣的。
+正如 the Gang of Four 所著的[*設計模式*](https://en.wikipedia.org/wiki/Design_Patterns)之前所說，我們應該盡量優先選擇組合，而不是繼承的方式。使用繼承和組合都有很多好處。
 
-接下來你或許會想，“那我應該在什麼時候使用繼承？” 
-答案依賴於你的問題，當然下面有一些何時繼承比組合更好的說明：
+這個準則的主要意義，在於當你本能的使用繼承時，試著思考一下`組合`是否能更好對你的需求建模。在一些情況下，`組合`是更好的。
 
-1. 你的繼承表達了“是一個”而不是“有一個”的關系（人類-》動物，用戶-》用戶詳情）
-2. 你可以復用基類的代碼（人類可以像動物一樣移動）
-3. 你想通過修改基類對所有派生類做全局的修改（當動物移動時，修改她們的能量消耗）
+接下來你或許會想，「那我應該在什麼時候使用繼承？」
+這得要看你的問題，當然下面有一些何時繼承比組合更好的說明：
+
+1. 你的繼承表達了「是一個」（is-a）而不是「有一個」(has-a)的關係（人類-》動物，用戶-》用戶詳情）
+2. 你可以重複使用基類別的程式碼（人類可以像動物一樣移動）
+3. 你想通過修改基類別，對所有繼承的類別做全局的修改（當動物移動時，修改她們的能量消耗）
 
 **糟糕的：**
 
@@ -1334,7 +1344,7 @@ class Employee
 [連貫接口Fluent interface](https://en.wikipedia.org/wiki/Fluent_interface)是一種
 旨在提高面向對像編程時代碼可讀性的API設計模式，他基於[方法鏈Method chaining](https://en.wikipedia.org/wiki/Method_chaining)
 
-有上下文的地方可以降低代碼復雜度，例如[PHPUnit Mock Builder](https://phpunit.de/manual/current/en/test-doubles.html)
+有上下文的地方可以降低代碼複雜度，例如[PHPUnit Mock Builder](https://phpunit.de/manual/current/en/test-doubles.html)
 和[Doctrine Query Builder](http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/query-builder.html)
 ，更多的情況會帶來較大代價：
 
