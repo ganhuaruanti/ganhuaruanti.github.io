@@ -42,7 +42,7 @@ tags: [blog]
      * [少用繼承多用組合](#少用繼承多用組合)
      * [避免連貫接口](#避免連貫接口)
      * [推薦使用 final 類](#推薦使用-final-類)
-  7. [類的SOLID原則 SOLID](#solid)
+  7. [類的SOLID原則](#solid)
      * [S: 單一職責原則 Single Responsibility Principle (SRP)](#單一職責原則)
      * [O: 開閉原則 Open/Closed Principle (OCP)](#開閉原則)
      * [L: 里氏替換原則 Liskov Substitution Principle (LSP)](#里氏替換原則)
