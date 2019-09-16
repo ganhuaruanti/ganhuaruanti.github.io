@@ -1341,25 +1341,18 @@ class Employee
 
 ### 避免連貫接口
 
-[連貫接口Fluent interface](https://en.wikipedia.org/wiki/Fluent_interface)是一種
-旨在提高面向對像編程時代碼可讀性的API設計模式，他基於[方法鏈Method chaining](https://en.wikipedia.org/wiki/Method_chaining)
+[連貫接口 Fluent interface](https://en.wikipedia.org/wiki/Fluent_interface)是一種希望在面向對像編程時，能提高可讀性的 API 設計模式，他基於[方法鏈 Method chaining](https://en.wikipedia.org/wiki/Method_chaining)的做法。
 
-有上下文的地方可以降低代碼複雜度，例如[PHPUnit Mock Builder](https://phpunit.de/manual/current/en/test-doubles.html)
+這種設計方式，可以有效的降低程式碼複雜度（例如[PHPUnit Mock Builder](https://phpunit.de/manual/current/en/test-doubles.html)
 和[Doctrine Query Builder](http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/query-builder.html)
-，更多的情況會帶來較大代價：
-
-While there can be some contexts, frequently builder objects, where this
-pattern reduces the verbosity of the code (for example the [PHPUnit Mock Builder](https://phpunit.de/manual/current/en/test-doubles.html)
-or the [Doctrine Query Builder](http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/query-builder.html)),
-more often it comes at some costs:
+）。更多的情況下，這方法會帶來較大代價：
 
 1. 破壞了 [對像封裝](https://en.wikipedia.org/wiki/Encapsulation_%28object-oriented_programming%29)
 2. 破壞了 [裝飾器模式](https://en.wikipedia.org/wiki/Decorator_pattern)
 3. 在測試組件中不好做[mock](https://en.wikipedia.org/wiki/Mock_object)
-4. 導致提交的diff不好閱讀
+4. 導致提交的 diff 不好閱讀
 
-了解更多請閱讀 [連貫接口為什麼不好](https://ocramius.github.io/blog/fluent-interfaces-are-evil/)
-，作者 [Marco Pivetta](https://github.com/Ocramius).
+想了解更多，請閱讀 [連貫接口為什麼不好](https://ocramius.github.io/blog/fluent-interfaces-are-evil/)這篇文章，作者 [Marco Pivetta](https://ocramius.github.io/)
 
 **壞：**
 
@@ -1448,19 +1441,19 @@ $car->dump();
 
 ### 推薦使用 final 類
 
-能用時盡量使用 `final` 關鍵字:
+能用時盡量使用 `final` 關鍵字：
 
 1. 阻止不受控的繼承鏈
-2. 鼓勵 [組合](#少用繼承多用組合).
-3. 鼓勵 [單一職責模式](#單一職責模式).
-4. 鼓勵開發者用你的公開方法而非通過繼承類獲取受保護方法的訪問權限.
-5. 使得在不破壞使用你的類的應用的情況下修改代碼成為可能.
+2. 鼓勵 [組合](#少用繼承多用組合)
+3. 鼓勵 [單一職責模式](#單一職責模式)
+4. 鼓勵開發者用你的公開方法，而非通過繼承類獲取受保護方法的訪問權限
+5. 使得修改代碼時，可以保證不破壞使用你的類別的其他程式
 
-The only condition is that your class should implement an interface and no other public methods are defined.
+唯一不使用 `final` 關鍵字的情況，是你的類別繼承了其他的介面，並且沒有宣告其他函式。
 
-For more informations you can read [the blog post](https://ocramius.github.io/blog/when-to-declare-classes-final/) on this topic written by [Marco Pivetta (Ocramius)](https://ocramius.github.io/).
+想了解更多，請閱讀 [什麼時候宣告 final](https://ocramius.github.io/blog/when-to-declare-classes-final/)這篇文章，作者 [Marco Pivetta](https://ocramius.github.io/)
 
-**Bad：**
+**壞：**
 
 ```php
 final class Car
@@ -1482,7 +1475,7 @@ final class Car
 }
 ```
 
-**Good：**
+**好：**
 
 ```php
 interface Vehicle
@@ -1516,11 +1509,11 @@ final class Car implements Vehicle
 
 ## SOLID
 
-**SOLID** 是Michael Feathers推薦的便於記憶的首字母簡寫，它代表了Robert Martin命名的最重要的五個面對對像編碼設計原則
+**SOLID** 是 Michael Feathers 推薦的好記簡寫，它代表了 Robert Martin 所命名，最重要的五個物件程式設計原則
 
  * [S: 單一職責原則 (SRP)](#職責原則)
  * [O: 開閉原則 (OCP)](#開閉原則)
- * [L: 裡氏替換原則 (LSP)](#裡氏替換原則)
+ * [L: 里氏替換原則 (LSP)](#里氏替換原則)
  * [I: 接口隔離原則 (ISP)](#接口隔離原則)
  * [D: 依賴倒置原則 (DIP)](#依賴倒置原則)
 
@@ -1529,7 +1522,11 @@ final class Car implements Vehicle
 
 Single Responsibility Principle (SRP)
 
-正如在Clean Code所述，"修改一個類應該只為一個理由"。人們總是易於用一堆方法塞滿一個類，如同我們只能在飛機上只能攜帶一個行李箱（把所有的東西都塞到箱子裡）。這樣做的問題是：從概念上這樣的類不是高內聚的，並且留下了很多理由去修改它。將你需要修改類的次數降低到最小很重要。這是因為，當有很多方法在類中時，修改其中一處，你很難知曉在代碼庫中哪些依賴的模塊會被影響到。
+正如在 Clean Code 所述，「修改一個類別，應該只有一個理由」。人們總是很容易用一堆方法塞滿一個類別。就好像我們只能在飛機上，只能攜帶一個行李箱，所以就會把所有的東西都塞到箱子裡。
+
+這樣做的問題是：從概念上，這樣的類別不是高內聚的，並且留下了很多理由去修改它。
+
+將你需要修改類別的次數降低到最小很重要。這是因為，當有很多方法在類別中時，修改其中一處，你很難知道在程式碼中，哪些依賴的模塊會被影響到。
 
 **壞：**
 
@@ -1601,9 +1598,7 @@ class UserSettings
 
 Open/Closed Principle (OCP)
 
-正如Bertrand Meyer所述，"軟件的工件（ classes, modules, functions 等）
-應該對擴展開放，對修改關閉。" 然而這句話意味著什麼呢？這個原則大體上表示你
-應該允許在不改變已有代碼的情況下增加新的功能
+正如 Bertrand Meyer 所說，「軟體的元件（類別，模組，函式⋯⋯等）應該對擴展開放，對修改關閉。」 然而這句話意味著什麼呢？這個原則大體上表示，你應該在僅新增但是不修改原本程式碼的情況下，要有辦法增加新的功能
 
 **壞：**
 
@@ -1718,7 +1713,9 @@ Liskov Substitution Principle (LSP)
 
 這是一個簡單的原則，卻用了一個不好理解的術語。它的正式定義是"如果S是T的子類型，那麼在不改變程序原有既定屬性（檢查、執行任務等）的前提下，任何T類型的對像都可以使用S類型的對像替代（例如，使用S的對像可以替代T的對像）" 這個定義更難理解:-)。
 
-對這個概念最好的解釋是：如果你有一個父類和一個子類，在不改變原有結果正確性的前提下父類和子類可以互換。這個聽起來依舊讓人有些迷惑，所以讓我們來看一個經典的正方形-長方形的例子。從數學上講，正方形是一種長方形，但是當你的模型通過繼承使用了"is-a"的關係時，就不對了。
+對這個概念最好的解釋是：如果你有一個父類和一個子類，在不改變原有結果正確性的前提下，父類和子類可以互換。這個聽起來依舊讓人有些迷惑，所以讓我們來看一個經典的正方形-長方形的例子。
+
+從數學上講，正方形是一種長方形。但是當你的模型通過繼承，使用了「is-a」的關係時，就不對了。
 
 **壞：**
 
@@ -1772,12 +1769,13 @@ foreach ($rectangles as $rectangle) {
     printArea($rectangle);
 }
 ```
+（譯註：這是因為，雖然說正方形是一種長方形，但是正方形不能夠做長方形能做到的「改變長度不改變寬度」這件事情。所以當你讓正方形繼承了長方形，然後放進會改變長寬的函式內，正方形就會出現原本長方形不會出現的錯誤了。）
 
 **好：**
 
 最好是將這兩種四邊形分別對待，用一個適合兩種類型的更通用子類型來代替。
 
-盡管正方形和長方形看起來很相似，但他們是不同的。正方形更接近菱形，而長方形更接近平行四邊形。但他們不是子類型。盡管相似，正方形、長方形、菱形、平行四邊形都是有自己屬性的不同形狀。
+儘管正方形和長方形看起來很相似，但他們是不同的。正方形更接近菱形，而長方形更接近平行四邊形。但他們不是子類型。儘管相似，正方形、長方形、菱形、平行四邊形，都是有自己屬性的不同形狀。
 
 ```php
 interface Shape
@@ -1829,15 +1827,19 @@ foreach ($shapes as $shape) {
 }
 ```
 
+（譯註：所以這邊的關係變成了，正方形長方形都「has-a」面積，也就是都可以取得面積。這樣就避免了繼承邏輯上的問題）
+
 **[⬆ 返回頂部](#目錄)**
 
 ### 接口隔離原則
 
 Interface Segregation Principle (ISP)
 
-接口隔離原則表示："調用方不應該被強制依賴於他不需要的接口"
+接口隔離原則表示：「調用方不應該被強制依賴於他不需要的介面」
 
-有一個清晰的例子來說明示範這條原則。當一個類需要一個大量的設置項，為了方便不會要求調用方去設置大量的選項，因為在通常他們不需要所有的設置項。使設置項可選有助於我們避免產生"胖接口"
+有一個清晰的例子來示範這條原則：當一個類需要一個大量的設置條件，為了方便不會要求調用方去設置所有的條件，因為在大多數時候，他們不需要這麼多條件。你應該要製作很多小介面。
+
+使設置變成可選項目。有助於我們避免產生「胖介面」
 
 **壞：**
 
@@ -1878,7 +1880,7 @@ class RobotEmployee implements Employee
 
 **好：**
 
-不是每一個工人都是雇員，但是每一個雇員都是一個工人
+不是每一個工人都是雇員，但是每一個雇員都是工人
 
 ```php
 interface Workable
@@ -1917,6 +1919,8 @@ class RobotEmployee implements Workable
     }
 }
 ```
+
+（譯註：機器人雇員不需要吃飯，所以不繼承雇員，但是我們有 `Workable` 可以繼承）
 
 **[⬆ 返回頂部](#目錄)**
 
