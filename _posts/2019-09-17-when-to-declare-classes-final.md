@@ -17,13 +17,12 @@ tags: [blog]
 下面的對話一直重複：
 
 1. 我問新類別的作者是否可以將該類別宣告成 `final`
-1. the author of the code is reluctant to this proposal, stating that <code>final</code> limits flexibility
-1. I have to explain that flexibility comes from good abstractions, and not from inheritance
+1. 作者不想改，提出宣告成 `final` 會限制程式的彈性
+1. 我需要解釋彈性並不來自繼承，而是來自好的抽象
 
-It is therefore clear that coders need a better explanation of **when** to use `final`, and when to avoid it.
+It is therefore clear that coders need a better explanation of **when** to use `final`，還有哪時要避免。
 
-
-There are [many](http://verraes.net/2014/05/final-classes-in-php/)[other](http://www.javaworld.com/article/2073649/core-java/why-extends-is-evil.html)[articles](http://stackoverflow.com/questions/137868/using-final-modifier-whenever-applicable-in-java)about the subject, but this is mainly thought as a "quick reference" for those that will ask me the same questions in future.
+有[許多](http://verraes.net/2014/05/final-classes-in-php/)[其他](http://www.javaworld.com/article/2073649/core-java/why-extends-is-evil.html)[文章](http://stackoverflow.com/questions/137868/using-final-modifier-whenever-applicable-in-java)討論過這個主題，不過這篇文章主要可以當作一個「快速摘要」，以免未來又有人問我相同的問題。
 
 ### When to use "final":
 
@@ -35,7 +34,9 @@ There are numerous reasons to mark a class as `final`: I will list and describe 
 
 #### 1. 避免超長串的死亡繼承鍊
 
-Developers have the bad habit of fixing problems by providing specific subclasses of an existing (not adequate)solution. You probably saw it yourself with examples like following:
+Developers have the bad habit of fixing problems by providing specific subclasses of an existing (not adequate)solution. 
+
+你或許就看過類似的設計：
 
 ```php
 <?php
@@ -51,13 +52,9 @@ class PatchedBot extends BotThatDoesSpecialThings { /* ... */ }
 
 很顯然的，你**絕不應該**把程式設計成這樣。
 
-The approach described above is usually adopted by developers who confuse 
-    <a href="http://c2.com/cgi/wiki?AlanKaysDefinitionOfObjectOriented" target="_blank">
-        <abbr title="Object Oriented Programming">OOP</abbr>
-    </a> with "<cite>a way of solving problems via inheritance</cite>"
-    ("inheritance-oriented-programming", maybe?).
+The approach described above is usually adopted by developers who confuse <a href="http://c2.com/cgi/wiki?AlanKaysDefinitionOfObjectOriented" target="_blank"><abbr title="Object Oriented Programming">OOP</abbr></a> with "<cite>a way of solving problems via inheritance</cite>"（或許可以稱呼為「繼承導向設計」？）
 
-#### 2. Encouraging composition
+#### 2. 鼓勵合成
 
 In general, preventing inheritance in a forceful way (by default) has the nice advantage of making developers think more about composition.
 
@@ -184,13 +181,13 @@ Coding a new class as `final` also means that you can make it extensible at any 
 
 No drawbacks, but you will have to explain your reasoning for such change to yourself and other members in your team, and that discussion may lead to better solutions before anything gets merged.
 
-#### 6. `extends` breaks encapsulation
+#### 6. `extends` 破壞封裝
 
 Unless the author of a class specifically designed it for extension, then you should consider it <code>final</code>even if it isn't.
 
 Extending a class breaks encapsulation, and can lead to unforeseen consequences and/or <abbr title="Backwards Compatibility">BC</abbr> breaks: think twice before using the `extends` keyword,or better, make your classes `final` and avoid others from having to think about it.
 
-#### 7. You don't need that flexibility
+#### 7. 你不需要這種彈性
 
 One argument that I always have to counter is that `final` reduces flexibility of use of a codebase.
 
@@ -211,7 +208,7 @@ Since encapsulation is guaranteed to be maintained, the only thing that you have
 
 Now you are free to rewrite everything, as many times as you want.
 
-### When to **avoid** `final`:
+### 哪時要**避免** `final`：
 
 Final classes **only work effectively under following assumptions**:
 
@@ -220,13 +217,13 @@ Final classes **only work effectively under following assumptions**:
     <li>All of the public API of the final class is part of that interface</li>
 </ol>
 
-If one of these two pre-conditions is missing, then you will likely reach a point in time when you will make theclass extensible, as your code is not truly relying on abstractions.
+If one of these two pre-conditions is missing, then you will likely reach a point in time when you will make the class extensible, as your code is not truly relying on abstractions.
 
 An exception can be made if a particular class represents a set of constraints or concepts that are totally immutable, inflexible and global to an entire system.A good example is a mathematical operation: `$calculator->sum($a, $b)` will unlikely change over time.In these cases, it is safe to assume that we can use the `final` keyword without an abstraction to rely on first.
 
 Another case where you do not want to use the `final` keyword is on existing classes: that can onlybe done if you follow <a href="http://semver.org/" target="_blank">semver</a> and you bump the major versionfor the affected codebase.
 
-### Try it out!
+### 試看看！
 
 After having read this article, consider going back to your code, and if you never did so, adding your first `final` marker to a class that you are planning to implement.
 
