@@ -5,17 +5,20 @@ author: flamerecca
 tags: [blog]
 ---
 
+本文章翻譯自 [Marco Pivetta](https://ocramius.github.io/) 所寫的[When to declare classes final](https://ocramius.github.io/blog/when-to-declare-classes-final/)
 
-**<abbr title="too long, didn't read">TL;DR</abbr>: Make your classes always `final`, if they implement an interface, and no other public methods are defined**
+如果有任何問題歡迎聯繫或者發 PR
 
-In the last month, I had a few discussions about the usage of the <code>final</code> marker on PHP classes.
+----
+**<abbr title="too long, didn't read">TL;DR</abbr>:  如果你的類別有實作介面，並且沒有宣告其餘的公開函式，那就把他宣告成 `final`**
 
-The pattern is recurrent:
+上個月針對 PHP 類別上 `final` 該什麼時候宣告，我和其他人有一些討論。
 
+下面的對話一直重複：
 
-1. I ask for a newly introduced class to be declared as <code>final</code></li>
-1. the author of the code is reluctant to this proposal, stating that <code>final</code> limits flexibility</li>
-1. I have to explain that flexibility comes from good abstractions, and not from inheritance</li>
+1. 我問新類別的作者是否可以將該類別宣告成 `final`
+1. the author of the code is reluctant to this proposal, stating that <code>final</code> limits flexibility
+1. I have to explain that flexibility comes from good abstractions, and not from inheritance
 
 It is therefore clear that coders need a better explanation of **when** to use `final`, and when to avoid it.
 
@@ -26,11 +29,11 @@ There are [many](http://verraes.net/2014/05/final-classes-in-php/)[other](http:/
 
 `final` should be used **whenever possible**.
 
-### Why do I have to use `final`?
+### 為什麼要用 `final`？
 
 There are numerous reasons to mark a class as `final`: I will list and describe those that aremost relevant in my opinion.
 
-#### 1. Preventing massive inheritance chain of doom
+#### 1. 避免超長串的死亡繼承鍊
 
 Developers have the bad habit of fixing problems by providing specific subclasses of an existing (not adequate)solution. You probably saw it yourself with examples like following:
 
@@ -46,7 +49,7 @@ class BotThatDoesSpecialThings extends Bot { /* ... */ }
 class PatchedBot extends BotThatDoesSpecialThings { /* ... */ }
 ```
 
-This is, without any doubts, how you should **NOT** design your code. 
+很顯然的，你**絕不應該**把程式設計成這樣。
 
 The approach described above is usually adopted by developers who confuse 
     <a href="http://c2.com/cgi/wiki?AlanKaysDefinitionOfObjectOriented" target="_blank">
