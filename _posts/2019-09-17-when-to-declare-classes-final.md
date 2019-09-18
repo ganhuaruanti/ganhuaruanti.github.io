@@ -20,7 +20,7 @@ tags: [blog]
 1. 作者不想改，提出宣告成 `final` 會限制程式的彈性
 1. 我需要解釋彈性並不來自繼承，而是來自好的抽象
 
-It is therefore clear that coders need a better explanation of **when** to use `final`，還有哪時要避免。
+顯然工程師需要更清楚的說明**哪時**要用 `final`，還有哪時要避免。
 
 有[許多](http://verraes.net/2014/05/final-classes-in-php/)[其他](http://www.javaworld.com/article/2073649/core-java/why-extends-is-evil.html)[文章](http://stackoverflow.com/questions/137868/using-final-modifier-whenever-applicable-in-java)討論過這個主題，不過這篇文章主要可以當作一個「快速摘要」，以免未來又有人問我相同的問題。
 
@@ -34,7 +34,7 @@ It is therefore clear that coders need a better explanation of **when** to use `
 
 #### 1. 避免超長串的死亡繼承鍊
 
-Developers have the bad habit of fixing problems by providing specific subclasses of an existing (not adequate)solution. 
+部分工程師有著在現有的類別下，加上新的子類別來解決問題的壞習慣。
 
 你或許就看過類似的設計：
 
@@ -52,7 +52,7 @@ class PatchedBot extends BotThatDoesSpecialThings { /* ... */ }
 
 很顯然的，你**絕不應該**把程式設計成這樣。
 
-The approach described above is usually adopted by developers who confuse <a href="http://c2.com/cgi/wiki?AlanKaysDefinitionOfObjectOriented" target="_blank"><abbr title="Object Oriented Programming">OOP</abbr></a> with "<cite>a way of solving problems via inheritance</cite>"（或許可以稱呼為「繼承導向設計」？）
+上面的解法很常出現在<a href="http://c2.com/cgi/wiki?AlanKaysDefinitionOfObjectOriented" target="_blank"><abbr title="Object Oriented Programming">物件導向程式設計</abbr></a>和 "<cite>透過繼承來解決問題</cite>"（或許可以稱呼為「繼承導向設計」？）搞混的工程師身上
 
 #### 2. 鼓勵合成
 
