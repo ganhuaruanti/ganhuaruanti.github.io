@@ -52,15 +52,15 @@ class PatchedBot extends BotThatDoesSpecialThings { /* ... */ }
 
 很顯然的，你**絕不應該**把程式設計成這樣。
 
-上面的解法很常出現在<a href="http://c2.com/cgi/wiki?AlanKaysDefinitionOfObjectOriented" target="_blank"><abbr title="Object Oriented Programming">物件導向程式設計</abbr></a>和「<cite>透過繼承來解決問題</cite>」或許可以稱呼為「繼承導向設計」？）搞混的工程師身上
+上面的解法很常出現在<a href="http://c2.com/cgi/wiki?AlanKaysDefinitionOfObjectOriented" target="_blank"><abbr title="Object Oriented Programming">物件導向程式設計</abbr></a>和「<cite>透過繼承來解決問題</cite>」（或許可以稱呼為「繼承導向設計」？）搞混的工程師身上
 
 #### 2. 鼓勵合成
 
-In general, preventing inheritance in a forceful way (by default) has the nice advantage of making developers think more about composition.
+一般來說，preventing inheritance in a forceful way (by default) has the nice advantage of making developers think more about composition.
 
 There will be less stuffing functionality in existing code via inheritance, which, in my opinion, is a symptom of haste combined with <a href="https://en.wikipedia.org/wiki/Feature_creep" target="_blank">feature creep</a>.
 
-Take the following naive example:
+看下面的簡單例子
 
 ```php
 <?php
@@ -85,7 +85,7 @@ class EmailingRegistrationService extends RegistrationService
 }
 ```
 
-By making the `RegistrationService` `final`, the idea behind `EmailingRegistrationService` being a child-class of it is denied upfront, and silly mistakes such as the previously shown one are easily avoided:
+透過讓 `RegistrationService` 變成 `final`，the idea behind `EmailingRegistrationService` being a child-class of it is denied upfront, and silly mistakes such as the previously shown one are easily avoided:
 
 ```php
 <?php
