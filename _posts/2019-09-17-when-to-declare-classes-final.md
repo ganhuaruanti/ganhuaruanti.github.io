@@ -24,13 +24,13 @@ It is therefore clear that coders need a better explanation of **when** to use `
 
 有[許多](http://verraes.net/2014/05/final-classes-in-php/)[其他](http://www.javaworld.com/article/2073649/core-java/why-extends-is-evil.html)[文章](http://stackoverflow.com/questions/137868/using-final-modifier-whenever-applicable-in-java)討論過這個主題，不過這篇文章主要可以當作一個「快速摘要」，以免未來又有人問我相同的問題。
 
-### When to use "final":
+### 哪時候該用 "final":
 
-`final` should be used **whenever possible**.
+`final` 應該在**任何可能的時候**使用
 
 ### 為什麼要用 `final`？
 
-There are numerous reasons to mark a class as `final`: I will list and describe those that aremost relevant in my opinion.
+用 `final` 有很多理由：下面會依據我認為的重要性依序列舉。
 
 #### 1. 避免超長串的死亡繼承鍊
 
