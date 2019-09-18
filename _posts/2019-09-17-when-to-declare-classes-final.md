@@ -24,7 +24,7 @@ tags: [blog]
 
 有[許多](http://verraes.net/2014/05/final-classes-in-php/)[其他](http://www.javaworld.com/article/2073649/core-java/why-extends-is-evil.html)[文章](http://stackoverflow.com/questions/137868/using-final-modifier-whenever-applicable-in-java)討論過這個主題，不過這篇文章主要可以當作一個「快速摘要」，以免未來又有人問我相同的問題。
 
-### 哪時候該用 "final":
+### 哪時候該用 `final`：
 
 `final` 應該在**任何可能的時候**使用
 
@@ -52,7 +52,7 @@ class PatchedBot extends BotThatDoesSpecialThings { /* ... */ }
 
 很顯然的，你**絕不應該**把程式設計成這樣。
 
-上面的解法很常出現在<a href="http://c2.com/cgi/wiki?AlanKaysDefinitionOfObjectOriented" target="_blank"><abbr title="Object Oriented Programming">物件導向程式設計</abbr></a>和 "<cite>透過繼承來解決問題</cite>"（或許可以稱呼為「繼承導向設計」？）搞混的工程師身上
+上面的解法很常出現在<a href="http://c2.com/cgi/wiki?AlanKaysDefinitionOfObjectOriented" target="_blank"><abbr title="Object Oriented Programming">物件導向程式設計</abbr></a>和「<cite>透過繼承來解決問題</cite>」或許可以稱呼為「繼承導向設計」？）搞混的工程師身上
 
 #### 2. 鼓勵合成
 
