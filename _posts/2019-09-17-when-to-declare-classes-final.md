@@ -58,8 +58,7 @@ class PatchedBot extends BotThatDoesSpecialThings { /* ... */ }
 
 一般來說，預設禁止工程師繼承物件有個好處，就是鼓勵工程師盡量多想想怎麼合成。
 
-這樣可以減少透過繼承不斷在原有的程式內增加功能。對我來說，這是一個習慣交差了事加上<a href="https://en.wikipedia.org/wiki/Feature_creep" target="_blank">功能蔓延</a>的症狀。
-
+這樣可以減少透過繼承不斷在原有的程式內增加功能。對我來說，這是一個習慣交差了事加上[功能蔓延](https://en.wikipedia.org/wiki/Feature_creep)
 看下面的簡單例子
 
 ```php
@@ -171,19 +170,21 @@ This example shows a set of flaws in the thought-process that led to the `Switch
 
 #### 4. 強迫開發者縮小物件的公開 API
 
-既然有很多公開方法的類別，很容易就打破<abbr title="Single Responsibility Principle">SRP</abbr> 原則，it is often true that a developer will want to override specific API of those classes.
+既然有很多公開方法的類別，很容易就打破<abbr title="Single Responsibility Principle">SRP</abbr> 原則，通常會導致很多工程師使用時想要覆寫這一些公開方法。
 
-Starting to make every new implementation `final` forces the developer to think about new APIs upfront,and about keeping them as small as possible.
+一開始就宣告成 `final` 強迫工程師去思考新的 API，並且會想到盡可能的讓它們越小越好。
 
 #### 5. `final` 在需要的時候還是可以拓展
 
-Coding a new class as `final` also means that you can make it extensible at any point in time (if really required).
+將新的類別宣告成 `final`，你還是可以在**真正**需要的時候拓展它。
+
+沒有任何的缺點
 
 No drawbacks, but you will have to explain your reasoning for such change to yourself and other members in your team, and that discussion may lead to better solutions before anything gets merged.
 
 #### 6. `extends` 破壞封裝
 
-Unless the author of a class specifically designed it for extension, then you should consider it <code>final</code>even if it isn't.
+Unless the author of a class specifically designed it for extension, then you should consider it `final` even if it isn't.
 
 Extending a class breaks encapsulation, and can lead to unforeseen consequences and/or <abbr title="Backwards Compatibility">BC</abbr> breaks: think twice before using the `extends` keyword,or better, make your classes `final` and avoid others from having to think about it.
 
@@ -200,8 +201,7 @@ My counter-argument is very simple: you don't need that flexibility.
 
 If you still need to remove the `final` keyword from an implementation, then there may be some other sort of code-smell involved.
 
-#### 8. You are free to change the code
-
+#### 8. 你可以改程式碼
 Once you made a class `final`, you can change it as much as it pleases you.
 
 Since encapsulation is guaranteed to be maintained, the only thing that you have to care about is that the public API.
