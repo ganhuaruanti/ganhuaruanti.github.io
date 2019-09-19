@@ -56,9 +56,9 @@ class PatchedBot extends BotThatDoesSpecialThings { /* ... */ }
 
 #### 2. 鼓勵合成
 
-一般來說，preventing inheritance in a forceful way (by default) has the nice advantage of making developers think more about composition.
+一般來說，預設禁止工程師繼承物件有個好處，就是鼓勵工程師盡量多想想怎麼合成。
 
-There will be less stuffing functionality in existing code via inheritance, which, in my opinion, is a symptom of haste combined with <a href="https://en.wikipedia.org/wiki/Feature_creep" target="_blank">feature creep</a>.
+這樣可以減少透過繼承不斷在原有的程式內增加功能。對我來說，這是一個習慣交差了事加上<a href="https://en.wikipedia.org/wiki/Feature_creep" target="_blank">功能蔓延</a>的症狀。
 
 看下面的簡單例子
 
@@ -85,7 +85,7 @@ class EmailingRegistrationService extends RegistrationService
 }
 ```
 
-透過讓 `RegistrationService` 變成 `final`，the idea behind `EmailingRegistrationService` being a child-class of it is denied upfront, and silly mistakes such as the previously shown one are easily avoided:
+如果讓 `RegistrationService` 變成 `final`，讓 `EmailingRegistrationService` 變成 `RegistrationService` 子類別的想法就不可能出現。前面所說的愚蠢錯誤就不會發生。
 
 ```php
 <?php
@@ -110,7 +110,7 @@ final class EmailingRegistrationService implements RegistrationServiceInterface
 }
 ```
 
-#### 3. Force the developer to think about user public API
+#### 3. 強迫開發者構思用的人會怎麼使用公開 API
 
 Developers tend to use inheritance to add accessors and additional API to existing classes:
 
@@ -167,15 +167,15 @@ This example shows a set of flaws in the thought-process that led to the `Switch
     </li>
 </ul>
 
-There are more issues with the `setDb` example, but these are the most relevant ones for our purposeof explaining why `final` would have prevented this sort of situation upfront.
+`setDb` 這個範例還有其他的問題，但是but these are the most relevant ones for our purposeof explaining why `final` would have prevented this sort of situation upfront.
 
-#### 4. Force the developer to shrink an object's public API
+#### 4. 強迫開發者縮小物件的公開 API
 
-Since classes with a lot of public methods are very likely to break the <abbr title="Single Responsibility Principle">SRP</abbr>, it is often true that a developer will want to override specific API of those classes.
+既然有很多公開方法的類別，很容易就打破<abbr title="Single Responsibility Principle">SRP</abbr> 原則，it is often true that a developer will want to override specific API of those classes.
 
 Starting to make every new implementation `final` forces the developer to think about new APIs upfront,and about keeping them as small as possible.
 
-#### 5. A `final` class can always be made extensible
+#### 5. `final` 在需要的時候還是可以拓展
 
 Coding a new class as `final` also means that you can make it extensible at any point in time (if really required).
 
