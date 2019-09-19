@@ -178,9 +178,7 @@ This example shows a set of flaws in the thought-process that led to the `Switch
 
 將新的類別宣告成 `final`，你還是可以在**真正**需要的時候拓展它。
 
-沒有任何的缺點
-
-No drawbacks, but you will have to explain your reasoning for such change to yourself and other members in your team, and that discussion may lead to better solutions before anything gets merged.
+沒有任何實際的缺點，只是你會需要和團隊的其他人解釋改變的原因，而這番討論可能會引導出更好的解法。
 
 #### 6. `extends` 破壞封裝
 
@@ -194,15 +192,15 @@ One argument that I always have to counter is that `final` reduces flexibility o
 
 My counter-argument is very simple: you don't need that flexibility.
 
-* Why do you need it in first place?
+* 為什麼會需要這種彈性？
 * Why can't you write your own customized implementation of a contract?
-* Why can't you use composition?
-* Did you carefully think about the problem?
+* 為什麼不能用合成的方式？
+* 你有詳細確認過問題嗎？
 
-If you still need to remove the `final` keyword from an implementation, then there may be some other sort of code-smell involved.
+如果確認過之後，發現確實還是需要移除 `final`，那代表你的程式碼很可能有其他的壞味道。
 
 #### 8. 你可以改程式碼
-Once you made a class `final`, you can change it as much as it pleases you.
+將程式改成 `final`，你還是可以在任何你想要的時候移除它。
 
 Since encapsulation is guaranteed to be maintained, the only thing that you have to care about is that the public API.
 
