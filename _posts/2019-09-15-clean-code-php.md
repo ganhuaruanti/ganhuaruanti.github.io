@@ -380,7 +380,7 @@ class Car
 ```php
 function createMicrobrewery($breweryName = 'Hipster Brew Co.'): void
 {
-    // ...
+    // ...
 }
 ```
 
@@ -391,7 +391,7 @@ function createMicrobrewery($breweryName = 'Hipster Brew Co.'): void
 ```php
 function createMicrobrewery($name = null): void
 {
-    $breweryName = $name ?: 'Hipster Brew Co.';
+    $breweryName = $name ?: 'Hipster Brew Co.';
     // ...
 }
 ```
@@ -403,7 +403,7 @@ function createMicrobrewery($name = null): void
 ```php
 function createMicrobrewery(string $breweryName = 'Hipster Brew Co.'): void
 {
-    // ...
+    // ...
 }
 ```
 
@@ -1811,8 +1811,8 @@ class Square implements Shape
 
     public function getArea(): int
     {
-        return $this->length ** 2;
-    }
+        return $this->length ** 2;
+    }
 }
 
 function printArea(Shape $shape): void
