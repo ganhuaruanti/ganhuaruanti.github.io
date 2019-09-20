@@ -196,14 +196,14 @@ Now you are free to rewrite everything, as many times as you want.
 
 類別宣告成 `final` **只有在下列假設時有效果**：
 
-1. There is an abstraction (interface) that the final class implements
-1. All of the public API of the final class is part of that interface
+1. 宣告 `final` 的類別有實作某個抽象 (介面)
+1. 該類別所有的公開 API 都在該介面內
 
-If one of these two pre-conditions is missing, then you will likely reach a point in time when you will make the class extensible, as your code is not truly relying on abstractions.
+如果其中某個條件不成立，那麼因為你的專案沒有真正的依賴抽象，有可能在某個時間點，你的專案會需要繼承某物件。
 
 An exception can be made if a particular class represents a set of constraints or concepts that are totally immutable, inflexible and global to an entire system.A good example is a mathematical operation: `$calculator->sum($a, $b)` will unlikely change over time.In these cases, it is safe to assume that we can use the `final` keyword without an abstraction to rely on first.
 
-Another case where you do not want to use the `final` keyword is on existing classes: that can onlybe done if you follow <a href="http://semver.org/" target="_blank">semver</a> and you bump the major versionfor the affected codebase.
+另一個你無法使用 `final` 的時候是在既有的類別上。除非原本的專案遵守<a href="http://semver.org/" target="_blank">語意化版本號</a>，並且你可以對該專案往前推進一個主版本號，不然無法加上 `final`。
 
 ### 試看看！
 
