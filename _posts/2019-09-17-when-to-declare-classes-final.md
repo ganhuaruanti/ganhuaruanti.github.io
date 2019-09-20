@@ -58,7 +58,8 @@ class PatchedBot extends BotThatDoesSpecialThings { /* ... */ }
 
 一般來說，預設禁止工程師繼承物件有個好處，就是鼓勵工程師盡量多想想怎麼合成。
 
-這樣可以減少透過繼承不斷在原有的程式內增加功能。對我來說，這是一個習慣交差了事加上[功能蔓延](https://en.wikipedia.org/wiki/Feature_creep)
+這樣可以減少透過繼承不斷在原有的程式內增加功能。對我來說，這是一個習慣交差了事加上[功能蔓延](https://en.wikipedia.org/wiki/Feature_creep)的狀況。
+
 看下面的簡單例子
 
 ```php
@@ -111,7 +112,7 @@ final class EmailingRegistrationService implements RegistrationServiceInterface
 
 #### 3. 強迫開發者構思用的人會怎麼使用公開 API
 
-Developers tend to use inheritance to add accessors and additional API to existing classes:
+有的開發者習慣透過繼承在原有的類別裡面增加 API：
 
 ```php
 <?php
@@ -145,28 +146,12 @@ class SwitchableDbRegistrationService extends RegistrationService
 ```
 This example shows a set of flaws in the thought-process that led to the `SwitchableDbRegistrationService`:
 
+* The `setDb` method is used to change the `DbConnectionInterface` at runtime, which seems to hide a different problem being solved: maybe we need a `MasterSlaveConnection` instead?
+* `setDb` 沒有在 `RegistrationServiceInterface`裡面宣告，therefore we can only use it when we strictly couple our code with the `SwitchableDbRegistrationService`, which defeats the purpose of the contract itself in some contexts.
+* The `setDb` method changes dependencies at runtime, and that may not be supported by the `RegistrationService` logic, and may as well lead to bugs.
+* Maybe the `setDb` method was introduced because of a bug in the original implementation: why was the fix provided this way? Is it an actual fix or does it only fix a symptom?
 
-<ul>
-    <li>
-        The <code>setDb</code> method is used to change the <code>DbConnectionInterface</code> at runtime, which seems
-        to hide a different problem being solved: maybe we need a <code>MasterSlaveConnection</code> instead?
-    </li>
-    <li>
-        The <code>setDb</code> method is not covered by the <code>RegistrationServiceInterface</code>, therefore
-        we can only use it when we strictly couple our code with the <code>SwitchableDbRegistrationService</code>,
-        which defeats the purpose of the contract itself in some contexts.
-    </li>
-    <li>
-        The <code>setDb</code> method changes dependencies at runtime, and that may not be supported
-        by the <code>RegistrationService</code> logic, and may as well lead to bugs.
-    </li>
-    <li>
-        Maybe the <code>setDb</code> method was introduced because of a bug in the original implementation: why
-        was the fix provided this way? Is it an actual fix or does it only fix a symptom?
-    </li>
-</ul>
-
-`setDb` 這個範例還有其他的問題，但是but these are the most relevant ones for our purposeof explaining why `final` would have prevented this sort of situation upfront.
+`setDb` 這個範例還有其他的問題。但是上面這些問題，可以很好的解釋為什麼透過 `final` 可以事先解決掉一些程式結構的錯誤。
 
 #### 4. 強迫開發者縮小物件的公開 API
 
@@ -182,24 +167,25 @@ This example shows a set of flaws in the thought-process that led to the `Switch
 
 #### 6. `extends` 破壞封裝
 
-Unless the author of a class specifically designed it for extension, then you should consider it `final` even if it isn't.
+除非作者刻意將類別為了繼承而設計，不然使用時，即使類別沒有宣告成 `final`，你還是要把它當作是 `final` 的。
 
-Extending a class breaks encapsulation, and can lead to unforeseen consequences and/or <abbr title="Backwards Compatibility">BC</abbr> breaks: think twice before using the `extends` keyword,or better, make your classes `final` and avoid others from having to think about it.
+繼承類別會破壞該類別的封裝，並且可能會導致不可預見的後果，或者 <abbr title="Backwards Compatibility">向下相容</abbr> 被破壞：`extends` 某個類別之前請三思，或者，更好的做法是，把你的類別宣告成 `final` 避免其他人需要考慮繼承。
 
 #### 7. 你不需要這種彈性
 
-One argument that I always have to counter is that `final` reduces flexibility of use of a codebase.
+一個我常遇到，反對 `final` 的意見，是這會導致程式碼的彈性降低。
 
-My counter-argument is very simple: you don't need that flexibility.
+我的反駁非常的簡單：你不需要這種彈性
 
 * 為什麼會需要這種彈性？
-* Why can't you write your own customized implementation of a contract?
+* 為什麼不能自己實作該介面？
 * 為什麼不能用合成的方式？
 * 你有詳細確認過問題嗎？
 
 如果確認過之後，發現確實還是需要移除 `final`，那代表你的程式碼很可能有其他的壞味道。
 
 #### 8. 你可以改程式碼
+
 將程式改成 `final`，你還是可以在任何你想要的時候移除它。
 
 Since encapsulation is guaranteed to be maintained, the only thing that you have to care about is that the public API.
@@ -208,12 +194,10 @@ Now you are free to rewrite everything, as many times as you want.
 
 ### 哪時要**避免** `final`：
 
-Final classes **only work effectively under following assumptions**:
+類別宣告成 `final` **只有在下列假設時有效果**：
 
-<ol>
-    <li>There is an abstraction (interface) that the final class implements</li>
-    <li>All of the public API of the final class is part of that interface</li>
-</ol>
+1. There is an abstraction (interface) that the final class implements
+1. All of the public API of the final class is part of that interface
 
 If one of these two pre-conditions is missing, then you will likely reach a point in time when you will make the class extensible, as your code is not truly relying on abstractions.
 
