@@ -144,10 +144,10 @@ class SwitchableDbRegistrationService extends RegistrationService
     }
 }
 ```
-This example shows a set of flaws in the thought-process that led to the `SwitchableDbRegistrationService`:
+This example shows a set of flaws in the thought-process that led to the `SwitchableDbRegistrationService`：
 
-* The `setDb` method is used to change the `DbConnectionInterface` at runtime, which seems to hide a different problem being solved: maybe we need a `MasterSlaveConnection` instead?
-* `setDb` 沒有在 `RegistrationServiceInterface`裡面宣告，therefore we can only use it when we strictly couple our code with the `SwitchableDbRegistrationService`, which defeats the purpose of the contract itself in some contexts.
+* `setDb` 是用來即時抽換 `DbConnectionInterface` 內容的。看起來這函式隱藏了另一個已經解決過的問題：可能我們其實需要的是 `MasterSlaveConnection`？
+* `setDb` 沒有在 `RegistrationServiceInterface`裡面宣告，therefore we can only use it when we strictly couple our code with the `SwitchableDbRegistrationService`，which defeats the purpose of the contract itself in some contexts.
 * The `setDb` method changes dependencies at runtime, and that may not be supported by the `RegistrationService` logic, and may as well lead to bugs.
 * Maybe the `setDb` method was introduced because of a bug in the original implementation: why was the fix provided this way? Is it an actual fix or does it only fix a symptom?
 
@@ -188,9 +188,9 @@ This example shows a set of flaws in the thought-process that led to the `Switch
 
 將程式改成 `final`，你還是可以在任何你想要的時候移除它。
 
-Since encapsulation is guaranteed to be maintained, the only thing that you have to care about is that the public API.
+既然我們維持了封裝，你唯一需要考慮的事情就是公開 API。
 
-Now you are free to rewrite everything, as many times as you want.
+現在你可以任意重寫所有東西，想重寫幾次都可以。
 
 ### 哪時要**避免** `final`：
 
@@ -201,12 +201,14 @@ Now you are free to rewrite everything, as many times as you want.
 
 如果其中某個條件不成立，那麼因為你的專案沒有真正的依賴抽象，有可能在某個時間點，你的專案會需要繼承某物件。
 
-An exception can be made if a particular class represents a set of constraints or concepts that are totally immutable, inflexible and global to an entire system.A good example is a mathematical operation: `$calculator->sum($a, $b)` will unlikely change over time.In these cases, it is safe to assume that we can use the `final` keyword without an abstraction to rely on first.
+有個例外是，某個類別代表的限制或者概念，對整個專案是不可變的，沒有彈性的，或者是全域的。這樣還是可以使用 `final`。
 
-另一個你無法使用 `final` 的時候是在既有的類別上。除非原本的專案遵守<a href="http://semver.org/" target="_blank">語意化版本號</a>，並且你可以對該專案往前推進一個主版本號，不然無法加上 `final`。
+舉例來說，數學的操作：像是 `$calculator->sum($a, $b)`，基本上不太可能隨時間改變。這個狀況下，我們可以在不加上任何抽象，但是為這個函式加上 `final`。
+
+另一個你無法使用 `final` 的時候，是在既有的類別上。除非原本的專案遵守<a href="http://semver.org/" target="_blank">語意化版本號</a>，並且你可以對該專案往前推進一個主版本號，不然無法加上 `final`。
 
 ### 試看看！
 
-After having read this article, consider going back to your code, and if you never did so, adding your first `final` marker to a class that you are planning to implement.
+讀完這篇文章以後，各位可以回去看看自己的程式碼。如果你從沒這麼做過的話，在自己下一個要實作的類別上，加上 `final` 標籤。
 
-You will see the rest just getting in place as expected.
+你會看到，剩下的事情自然水到渠成。
