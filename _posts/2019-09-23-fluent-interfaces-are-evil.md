@@ -5,12 +5,16 @@ author: flamerecca
 tags: [blog]
 ---
 
-<p>
-    Today, I had again a discussion on IRC on why
+本文章翻譯自 [Marco Pivetta](https://ocramius.github.io/) 所寫的[Fluent Interfaces are Evil](https://ocramius.github.io/blog/fluent-interfaces-are-evil/)
+
+如果有任何問題歡迎聯繫或者發 PR
+
+----
+
+Today, I had again a discussion on IRC on why
     <a href="https://github.com/doctrine/doctrine2/blob/2.4/lib/Doctrine/ORM/EntityManager.php" target="_blank">
         Doctrine's EntityManager
     </a> doesn't (and won't) implement a fluent interface. Here are my thoughts on why that's the case.
-</p>
 
 <hr/>
 
@@ -32,16 +36,9 @@ interface {InterfaceName}
 }
 ```
 
-<p>
-    Obviously, PHP doesn't provide return type hints, which means that I limited myself to define a
-    <code>/** @return self */</code>
-    <a href="http://www.phpdoc.org/docs/latest/for-users/tags/return.html" target="_blank">docblock</a>.
-</p>
+Obviously, PHP doesn't provide return type hints, which means that I limited myself to define a `/** @return self */` <a href="http://www.phpdoc.org/docs/latest/for-users/tags/return.html" target="_blank">docblock</a>.
 
-<p>
-    A fluent interface allows you to chain method calls, which results in less typed characters
-    when applying multiple operations on the same object:
-</p>
+A fluent interface allows you to chain method calls, which results in less typed characters when applying multiple operations on the same object:
 
 ```php
 <?php
@@ -54,9 +51,9 @@ $foo
     ->allTheThings();
 ```
 
-<hr/>
+----
 
-<h2>When does a fluent interface make sense?</h2>
+## When does a fluent interface make sense?
 
 <p>
     Fluent interfaces make sense in some APIs, like the
@@ -81,9 +78,9 @@ $queryBuilder
     ->setParameter('identifier', 100);
 ```
 
-<hr/>
+----
 
-<h2>What's the problem with fluent interfaces?</h2>
+## What's the problem with fluent interfaces?
 
 <p>
     I've identified some issues while working with fluent interfaces. Here they are listed in
