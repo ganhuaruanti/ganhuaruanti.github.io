@@ -7,25 +7,22 @@ tags: [blog]
 
 本文章翻譯自 [Marco Pivetta](https://ocramius.github.io/) 所寫的[Fluent Interfaces are Evil](https://ocramius.github.io/blog/fluent-interfaces-are-evil/)
 
-如果有任何問題歡迎聯繫或者發 PR
+如果有任何問題，歡迎聯繫或者發 PR
 
 ----
 
-今天，我在 IRC 上面討論為什麼
-    <a href="https://github.com/doctrine/doctrine2/blob/2.4/lib/Doctrine/ORM/EntityManager.php" target="_blank">
-        Doctrine EntityManager
-    </a> 沒有（未來也不會）實作 fluent interface。以下是我的想法以及說明。
+今天，我在 IRC 上面討論為什麼 [Doctrine EntityManager](https://github.com/doctrine/doctrine2/blob/2.4/lib/Doctrine/ORM/EntityManager.php)
+
+沒有（未來也不會）實作 fluent interface。以下是我的想法以及說明。
 
 <hr/>
 
-## 提要：什麼是 Fluent interface？
+## 提要：什麼是 fluent interface？
 
-<p>
-    A <a href="https://en.wikipedia.org/wiki/Fluent_interface" target="_blank">Fluent Interface</a>
-    is an object oriented API that provides "more readable" code.
-    <br/>
-    In general, the template for a fluent interface can be like following:
-</p>
+[fluent Interface](https://en.wikipedia.org/wiki/Fluent_interface)
+是一個 is an object oriented API that provides 「可讀性更高」的程式碼。
+
+概略地說，fluent interface 是如下的程式碼：
 
 ```php
 <?php
