@@ -11,10 +11,10 @@ tags: [blog]
 
 ----
 
-Today, I had again a discussion on IRC on why
+今天，我在 IRC 上面討論為什麼
     <a href="https://github.com/doctrine/doctrine2/blob/2.4/lib/Doctrine/ORM/EntityManager.php" target="_blank">
-        Doctrine's EntityManager
-    </a> doesn't (and won't) implement a fluent interface. Here are my thoughts on why that's the case.
+        Doctrine EntityManager
+    </a> 沒有（未來也不會）實作 fluent interface。以下是我的想法以及說明。
 
 <hr/>
 
@@ -53,7 +53,7 @@ $foo
 
 ----
 
-## When does a fluent interface make sense?
+## 什麼時候 fluent interface 有道理？
 
 <p>
     Fluent interfaces make sense in some APIs, like the
@@ -80,7 +80,7 @@ $queryBuilder
 
 ----
 
-## What's the problem with fluent interfaces?
+## fluent interfaces 有什麼問題？
 
 <p>
     I've identified some issues while working with fluent interfaces. Here they are listed in
