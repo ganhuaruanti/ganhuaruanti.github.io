@@ -13,16 +13,16 @@ tags: [blog]
 
 今天，我在 IRC 上面討論為什麼 [Doctrine EntityManager](https://github.com/doctrine/doctrine2/blob/2.4/lib/Doctrine/ORM/EntityManager.php)
 
-沒有（未來也不會）實作 fluent interface。以下是我的想法以及說明。
+沒有（未來也不會）實作流式接口。以下是我的想法以及說明。
 
 <hr/>
 
-## 提要：什麼是 fluent interface？
+## 提要：什麼是流式接口？
 
-[fluent Interface](https://en.wikipedia.org/wiki/Fluent_interface)
-是一個 is an object oriented API that provides 「可讀性更高」的程式碼。
+[流式接口](https://en.wikipedia.org/wiki/Fluent_interface)
+是一個可以提供「可讀性更高」程式碼的設計。
 
-概略地說，fluent interface 是如下的程式碼：
+概略地說，流式接口是如下的程式碼：
 
 ```php
 <?php
@@ -34,9 +34,11 @@ interface {InterfaceName}
 }
 ```
 
-Obviously, PHP doesn't provide return type hints, which means that I limited myself to define a `/** @return self */` <a href="http://www.phpdoc.org/docs/latest/for-users/tags/return.html" target="_blank">docblock</a>.
+顯然的，因為 PHP 不支援回傳型態的宣告，所以我只能宣告一個 `/** @return self */` 的 [docblock](http://www.phpdoc.org/docs/latest/for-users/tags/return.html)。
 
-A fluent interface allows you to chain method calls, which results in less typed characters when applying multiple operations on the same object:
+（譯註：現在支援回傳型態宣告了，不過這跟本文無關。）
+
+流式接口讓你可以串接方法的呼叫，當你對同一個物件進行多個操作時，可以輸入更少的字：
 
 ```php
 <?php
@@ -51,19 +53,13 @@ $foo
 
 ----
 
-## 什麼時候 fluent interface 有道理？
+## 什麼時候流式接口有道理？
 
-<p>
-    Fluent interfaces make sense in some APIs, like the
-    <a href="https://github.com/doctrine/doctrine2/blob/2.4/lib/Doctrine/ORM/QueryBuilder.php" target="_blank">
-        QueryBuilder
-    </a>, or in general builder objects, especially when it comes to putting together nodes into
-    a hierarchical structure.
-</p>
+Fluent interfaces make sense in some APIs, like the [QueryBuilder](https://github.com/doctrine/doctrine2/blob/2.4/lib/Doctrine/ORM/QueryBuilder.php)，或者其他的 builder objects, especially when it comes to putting together nodes into a hierarchical structure.
 
-<p>
-    Here's an example of good usage of a fluent interface:
-</p>
+
+Here's an example of good usage of a fluent interface:
+
 
 ```php
 <?php
@@ -80,10 +76,10 @@ $queryBuilder
 
 ## fluent interfaces 有什麼問題？
 
-<p>
-    I've identified some issues while working with fluent interfaces. Here they are listed in
-    descending order of relevance:
-</p>
+
+I've identified some issues while working with fluent interfaces. Here they are listed in
+descending order of relevance:
+
 
 <ol>
     <li>
@@ -103,15 +99,11 @@ $queryBuilder
 
 <hr/>
 
-<h2>Fluent Interfaces break Encapsulation</h2>
+## Fluent Interfaces break Encapsulation
 
-<p>
-    The entire idea behind a fluent interface bases on an assumption:
-</p>
+The entire idea behind a fluent interface bases on an assumption:
 
-<blockquote>
-    In a Fluent Interface, the return value of a method will be the same instance on which the method was called.
-</blockquote>
+>In a Fluent Interface, the return value of a method will be the same instance on which the method was called.
 
 <p>
     First of all, "assuming" facts that are not safely constrained by the language is a mistake.
