@@ -5,7 +5,7 @@ author: flamerecca
 tags: [blog]
 ---
 
-本文章翻譯自 [Marco Pivetta](https://ocramius.github.io/) 所寫的[Fluent Interfaces are Evil](https://ocramius.github.io/blog/fluent-interfaces-are-evil/)
+本文章翻譯自 [Marco Pivetta](https://ocramius.github.io/) 所寫的 [Fluent Interfaces are Evil](https://ocramius.github.io/blog/fluent-interfaces-are-evil/)
 
 如果有任何問題，歡迎聯繫或者發 PR
 
@@ -55,11 +55,9 @@ $foo
 
 ## 什麼時候流式接口有道理？
 
-Fluent interfaces make sense in some APIs, like the [QueryBuilder](https://github.com/doctrine/doctrine2/blob/2.4/lib/Doctrine/ORM/QueryBuilder.php)，或者其他的 builder objects, especially when it comes to putting together nodes into a hierarchical structure.
+流式接口在某些 API 上面使用很合理，像是 [QueryBuilder](https://github.com/doctrine/doctrine2/blob/2.4/lib/Doctrine/ORM/QueryBuilder.php)，或者其他的 builder 都很適合。特別是, especially when it comes to putting together nodes into a hierarchical structure.
 
-
-Here's an example of good usage of a fluent interface:
-
+下面是一個使用流式接口的好範例：
 
 ```php
 <?php
@@ -74,32 +72,22 @@ $queryBuilder
 
 ----
 
-## fluent interfaces 有什麼問題？
+## 流式接口有什麼問題？
 
 
 I've identified some issues while working with fluent interfaces. Here they are listed in
 descending order of relevance:
 
-
-<ol>
-    <li>
-        Fluent Interfaces break
-        <a href="https://en.wikipedia.org/wiki/Encapsulation_%28object-oriented_programming%29" target="_blank">
-            Encapsulation
-        </a>
-    </li>
-    <li>Fluent Interfaces break Decorators (and sometimes Composition)</li>
-    <li>Fluent Interfaces are harder to Mock</li>
-    <li>Fluent Interfaces make diffs harder to read</li>
-    <li>Fluent Interfaces are less readable (personal feeling)</li>
-    <li>
-        Fluent Interfaces cause <abbr title="Backwards Compatibility">BC</abbr> breaks during early development stages
-    </li>
-</ol>
+1. 流式接口破壞[封裝](https://en.wikipedia.org/wiki/Encapsulation_%28object-oriented_programming%29)
+1. 流式接口破壞裝飾者模式，有時會破壞合成。
+1. 流式接口比較難 Mock
+1. 流式接口讓差異比對更難讀
+1. 流式接口讓可讀性更差（個人意見）
+1. 流式接口在開發早期，會破壞向下相容
 
 <hr/>
 
-## Fluent Interfaces break Encapsulation
+## 流式接口破壞封裝
 
 The entire idea behind a fluent interface bases on an assumption:
 
