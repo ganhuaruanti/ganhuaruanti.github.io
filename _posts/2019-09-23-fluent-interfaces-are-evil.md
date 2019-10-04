@@ -26,6 +26,7 @@ tags: [blog]
     <br/>
     In general, the template for a fluent interface can be like following:
 </p>
+
 ```php
 <?php
 
