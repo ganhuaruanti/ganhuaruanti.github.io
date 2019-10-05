@@ -55,7 +55,7 @@ $foo
 
 ## 什麼時候流式接口有道理？
 
-流式接口在某些 API 上面使用很合理，像是 [QueryBuilder](https://github.com/doctrine/doctrine2/blob/2.4/lib/Doctrine/ORM/QueryBuilder.php)，或者其他的 builder 都很適合。特別是, especially when it comes to putting together nodes into a hierarchical structure.
+流式接口在某些 API 上面使用很合理，像是 [QueryBuilder](https://github.com/doctrine/doctrine2/blob/2.4/lib/Doctrine/ORM/QueryBuilder.php)，或者其他的 builder 都很適合。特別是用來將各個節點放進某個階級結構裡面。
 
 下面是一個使用流式接口的好範例：
 
