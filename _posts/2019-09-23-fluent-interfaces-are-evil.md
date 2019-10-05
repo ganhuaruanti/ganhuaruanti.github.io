@@ -74,9 +74,7 @@ $queryBuilder
 
 ## 流式接口有什麼問題？
 
-
-I've identified some issues while working with fluent interfaces. Here they are listed in
-descending order of relevance:
+我發現了流式接口的一些問題。以下依據重要性列出這些問題：
 
 1. 流式接口破壞[封裝](https://en.wikipedia.org/wiki/Encapsulation_%28object-oriented_programming%29)
 1. 流式接口破壞裝飾者模式，有時會破壞合成。
@@ -89,16 +87,15 @@ descending order of relevance:
 
 ## 流式接口破壞封裝
 
-The entire idea behind a fluent interface bases on an assumption:
+流式接口的概念基於以下假設：
 
->In a Fluent Interface, the return value of a method will be the same instance on which the method was called.
+>在流式接口裡面，方法的回傳值，會是運行該方法的物件本身。
 
-<p>
-    First of all, "assuming" facts that are not safely constrained by the language is a mistake.
-    <br/>
-    Additionally, in OOP, you cannot rely on the identity of the returned value of an object, but just on its
-    interface.
-</p>
+首先，**假設**語言設計上無法保證的事情，本身就是個問題。
+
+Additionally, in OOP, you cannot rely on the identity of the returned value of an object, but just on its
+interface.
+
 
 <p>
     What does that mean? Let's make an example with a <code>Counter</code> interface:
