@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 什麼時候把類別宣告成 final
+title: 流式接口是邪惡的
 author: flamerecca
 tags: [blog]
 ---
