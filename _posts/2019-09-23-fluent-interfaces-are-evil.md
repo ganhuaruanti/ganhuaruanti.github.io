@@ -11,9 +11,7 @@ tags: [blog]
 
 ----
 
-今天，我在 IRC 上面討論為什麼 [Doctrine EntityManager](https://github.com/doctrine/doctrine2/blob/2.4/lib/Doctrine/ORM/EntityManager.php)
-
-沒有（未來也不會）實作流式接口。以下是我的想法以及說明。
+今天，我在 IRC 上面討論為什麼 [Doctrine EntityManager](https://github.com/doctrine/doctrine2/blob/2.4/lib/Doctrine/ORM/EntityManager.php) 沒有（未來也不會）實作流式接口。以下是我的想法以及說明。
 
 <hr/>
 
@@ -93,8 +91,7 @@ $queryBuilder
 
 首先，**假設**語言設計上無法保證的事情，本身就是個問題。
 
-另外。在物件導向程式裡面，你並不能真正確定, in OOP, you cannot rely on the identity of the returned value of an object, but just on its
-interface.
+另外。在物件導向程式裡面，你並不能真正確定, in OOP, you cannot rely on the identity of the returned value of an object, but just on its interface.
 
 什麼意思呢？我們用 <code>Counter</code> 介面做範例：
 
