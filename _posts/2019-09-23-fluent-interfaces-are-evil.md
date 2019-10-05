@@ -93,13 +93,10 @@ $queryBuilder
 
 首先，**假設**語言設計上無法保證的事情，本身就是個問題。
 
-Additionally, in OOP, you cannot rely on the identity of the returned value of an object, but just on its
+另外。在物件導向程式裡面，你並不能真正確定, in OOP, you cannot rely on the identity of the returned value of an object, but just on its
 interface.
 
-
-<p>
-    What does that mean? Let's make an example with a <code>Counter</code> interface:
-</p>
+什麼意思呢？我們用 <code>Counter</code> 介面做範例：
 
 ```php
 <?php
