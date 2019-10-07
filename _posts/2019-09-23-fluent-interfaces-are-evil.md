@@ -108,7 +108,7 @@ interface Counter
 }
 ```
 
-<p>Here's a fluent implementation of the interface:</p>
+下面是這個介面流式接口的實作方式：
 
 ```php
 <?php
@@ -183,19 +183,17 @@ $counter = $counter->count()->count()->count();
 echo $counter->getCount(); // 3!
 ```
 
-<p>
-    We managed to implement an immutable counter even though the author of <code>Counter</code> maybe
-    assumed that all implementations should be mutable.
-</p>
-<p>
-    The same can be seen in the opposite direction: interface author may want to have all implementations
-    immutable, but then people implement a mutable version of it.
-</p>
-<p>
-    Turns out that the only correct way of
-    <a href="https://3v4l.org/fILUc" target="_blank">using such an interface</a>
-    is the "immutable" way, so:
-</p>
+
+We managed to implement an immutable counter even though the author of <code>Counter</code> maybe
+assumed that all implementations should be mutable.
+
+The same can be seen in the opposite direction: interface author may want to have all implementations
+immutable, but then people implement a mutable version of it.
+
+Turns out that the only correct way of
+<a href="https://3v4l.org/fILUc" target="_blank">using such an interface</a>
+is the "immutable" way, so:
+
 
 ```php
 <?php
